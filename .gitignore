@@ -8,3 +8,6 @@ TP2-Simulación/obj/Debug/TP2-Simulación.csproj.FileListAbsolute.txt
 .vs/TP2-Simulación/v17/.suo
 *.exe
 *.pdb
+bin/Debug
+obj/Debug
+*.suo

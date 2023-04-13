@@ -39,7 +39,11 @@ namespace TP2_Simulación.Clases
                 }
                 else
                 {
+                    //Genere de nuevo dos random porque sino daba error, ver de solucionar esto
+                    random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                    random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
                     variableAleatoria = calculoNormalN2(random1, random2, desviacion, media);
+                    
                 }
                 listadoX[i] = variableAleatoria;
             }
