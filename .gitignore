@@ -8,3 +8,5 @@ TP2-Simulación/obj/Release/DesignTimeResolveAssemblyReferences.cache
 TP2-Simulación/obj/Release/TP2-Simulación.csproj.AssemblyReference.cache
 *.cache
 *.user
+*.cache
+.vs/TP2-Simulación/v17/.suo
