@@ -13,6 +13,7 @@ namespace TP2_Simulación.Clases
         private double media;
         private int datos;
 
+        
 
         //Definición del numero aleatorio
         private Random random = new Random();
