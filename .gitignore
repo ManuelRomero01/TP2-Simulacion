@@ -1,3 +1,8 @@
 
 *.vsidx
 *.txt
+*.user
+*.cache
+TP2-Simulación/obj/Debug/TP2-Simulación.csproj.FileListAbsolute.txt
+*.cache
+.vs/TP2-Simulación/v17/.suo
