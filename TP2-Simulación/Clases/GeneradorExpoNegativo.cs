@@ -16,7 +16,7 @@ namespace TP2_Simulación.Clases
 
         //Definición del numero aleatorio
         private Random random = new Random();
-        private double[] rnd;
+        private double rnd;
 
         public GeneradorExpoNegativo(double lambda, double media, double datos)
         {
@@ -25,34 +25,33 @@ namespace TP2_Simulación.Clases
             datos = this.datos;
         }
 
-        public (double[], double[]) generarVariablesAleatoriasLambda()
+        public double[] generarVariablesAleatoriasLambda()
         {
             double[] x = new double[this.datos];
-            rnd = new double[this.datos];
             for (int i = 0; i < this.datos; i++)
             {
-                rnd[i] = Math.Truncate(random.NextDouble() * 10000) / 10000;
-                x[i] = (-1 / this.lambda) * Math.Log(1 - rnd[i]);
+                rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                x[i] = Math.Truncate(-1 / this.lambda) * Math.Log(1 - rnd * 10000) / 10000;
 
             }
 
-            return (x, rnd);
+            return x;
         }
 
 
-        public (double[], double[]) generarVariablesAleatoriasMedia()
+        public double[] generarVariablesAleatoriasMedia()
         {
             double[] x = new double[this.datos];
-            rnd = new double[this.datos];
             for (int i = 0; i < this.datos; i++)
             {
-                rnd[i] = Math.Truncate(random.NextDouble() * 10000) / 10000;
-                x[i] = (-this.media) * Math.Log(1 - rnd[i]);
+                rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                x[i] = Math.Truncate((-this.media) * Math.Log(1 - rnd) * 10000) / 10000;
 
             }
 
-            return (x, rnd);
+            return x;
 
         }
     }
 }
+

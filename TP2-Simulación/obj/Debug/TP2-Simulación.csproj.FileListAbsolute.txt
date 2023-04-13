@@ -9,3 +9,14 @@ C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\T
 C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulación\TP2-Simulación\obj\Debug\TP2-Simulación.csproj.CoreCompileInputs.cache
 C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulación\TP2-Simulación\obj\Debug\TP2-Simulación.exe
 C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulación\TP2-Simulación\obj\Debug\TP2-Simulación.pdb
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\bin\Debug\TP2-Simulación.exe.config
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\bin\Debug\TP2-Simulación.exe
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\bin\Debug\TP2-Simulación.pdb
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.csproj.AssemblyReference.cache
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.csproj.SuggestedBindingRedirects.cache
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2_Simulación.Principal.resources
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2_Simulación.Properties.Resources.resources
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.csproj.GenerateResource.cache
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.csproj.CoreCompileInputs.cache
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.exe
+C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.pdb

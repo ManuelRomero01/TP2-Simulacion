@@ -3,4 +3,8 @@
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Project</StartAction>
+    <StartWorkingDirectory>C:\Users\manur\OneDrive\Desktop\FACULTAD\4 AÑO\MATERIAS\SIMULACIÓN\PRÁCTICO\TRABAJO PRÁCTICO\TP2-Simulacion\TP2-Simulación\bin\Debug\</StartWorkingDirectory>
+  </PropertyGroup>
 </Project>
