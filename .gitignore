@@ -10,3 +10,5 @@ TP2-Simulación/obj/Release/TP2-Simulación.csproj.AssemblyReference.cache
 *.user
 *.cache
 .vs/TP2-Simulación/v17/.suo
+*.cache
+.vs/TP2-Simulación/v17/.suo
