@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2_Simulación.Clases
 {
-    internal class GenearadorNormal
+    internal class GeneradorNormal
     {
         public double calculoNormalN1(double random1, double random2, double desviacion, double media)
         {
@@ -29,12 +29,13 @@ namespace TP2_Simulación.Clases
             double random2;
             Random random = new Random();
 
+            random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+            random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+
             for (int i = 0; i < cantidad ; i++)
             {
                 if (i % 2 == 0)
                 {
-                    random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
-                    random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
                     variableAleatoria = calculoNormalN1(random1, random2, desviacion, media);
                 }
                 else
@@ -43,7 +44,13 @@ namespace TP2_Simulación.Clases
                     random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
                     random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
                     variableAleatoria = calculoNormalN2(random1, random2, desviacion, media);
+<<<<<<< Updated upstream
                     
+=======
+
+                    random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                    random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+>>>>>>> Stashed changes
                 }
                 listadoX[i] = variableAleatoria;
             }

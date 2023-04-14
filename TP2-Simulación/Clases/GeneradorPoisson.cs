@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2_Simulación.Clases
 {
-    internal class GenearadorPoisson
+    internal class GeneradorPoisson
     {
         private double lambda;
         private int datos;
@@ -15,7 +15,7 @@ namespace TP2_Simulación.Clases
         private Random random = new Random();
         private List<double> rnd;
 
-        public GenearadorPoisson(double lamda, int datos)
+        public GeneradorPoisson(double lamda, int datos)
         {
             this.lambda = lamda;
             this.datos = datos;
