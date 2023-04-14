@@ -47,20 +47,6 @@
             // 
             // lblVariables
             // 
-<<<<<<< Updated upstream
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exponencialNegativaToolStripMenuItem,
-            this.uniformeToolStripMenuItem,
-            this.poissonToolStripMenuItem,
-            this.normalToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(2035, 72);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-=======
             this.lblVariables.AutoSize = true;
             this.lblVariables.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVariables.Location = new System.Drawing.Point(68, 46);
@@ -68,7 +54,6 @@
             this.lblVariables.Size = new System.Drawing.Size(110, 25);
             this.lblVariables.TabIndex = 0;
             this.lblVariables.Text = "Variables:";
->>>>>>> Stashed changes
             // 
             // lblCantidadValores
             // 
