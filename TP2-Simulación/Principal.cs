@@ -63,6 +63,7 @@ namespace TP2_Simulación
             {
                 lblSegundaVariable.Visible = false;
                 txtSegundaVariable.Visible = false;
+                SegundaVariableEditada = true;
                 lblPrimeraVariable.Text = "Lambda:";
             }
         }
