@@ -169,10 +169,33 @@ namespace TP2_Simulación
                     {
                         if (int.Parse(txtDesde.Text) > 0)
                         {
-                            return true;
+                            if((int.Parse(txtDesde.Text) - int.Parse(txtHasta.Text))<= 5000)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("La cantidad de intervalos a visualizar es mayor a 5000. Por favor reduzca el valor del hasta o aumente el del desde");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("La cantidad desde debe ser un valor positivo");
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("La cantidad hasta debe ser menor a la cantidad de valores a generar");
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("La cantidad hasta debe ser mayor a la cantidad desde");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Los valores desde y hasta se encuentran vacios");
             }
             return false;
         }
@@ -181,7 +204,7 @@ namespace TP2_Simulación
         {
             if (txtCantValores.Text != "")
             {
-                if (int.Parse(txtCantValores.Text) > 5000 && int.Parse(txtCantValores.Text) < 0)
+                if (int.Parse(txtCantValores.Text) > 50000 && int.Parse(txtCantValores.Text) < 0)
                 {
                     MessageBox.Show("Ingrese un valor valido.");
                 }
@@ -238,10 +261,6 @@ namespace TP2_Simulación
                         {
                             MessageBox.Show("Complete las variables antes de continuar.");
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("El rango ingresado es invalido");
                     }
                 }
             }

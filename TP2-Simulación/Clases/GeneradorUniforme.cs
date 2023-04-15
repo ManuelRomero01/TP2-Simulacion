@@ -10,18 +10,18 @@ namespace TP2_Simulación.Clases
     internal class GeneradorUniforme
     {
         // Atributos de la clase
-        private double a; // desde
-        private double b; // hasta
-        private int cantidad; // a generar
+        private double desde;
+        private double hasta; 
+        private int cantidad; 
 
         // Generador de números pseudoaleatorios
         private Random random = new Random();
 
         // Constructor de la clase
-        public GeneradorUniforme(double a, double b, int cant)
+        public GeneradorUniforme(double desde, double hasta, int cant)
         {
-            this.a = a;
-            this.b = b;
+            this.desde = desde;
+            this.hasta = hasta;
             this.cantidad = cant;
         }
 
@@ -34,7 +34,7 @@ namespace TP2_Simulación.Clases
             for (int i = 0; i < cantidad; i++)
             {
                 rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
-                x[i] = Math.Truncate((rnd * (b - a) + a) * 10000) / 10000; 
+                x[i] = Math.Truncate((rnd * (hasta - desde) + desde) * 10000) / 10000; 
             }
 
             return x;

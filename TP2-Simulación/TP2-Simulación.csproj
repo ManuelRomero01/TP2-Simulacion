@@ -47,11 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Auxiliar.cs" />
+    <Compile Include="Clases\CalculoProbabilidad.cs" />
     <Compile Include="Clases\GeneradorExpoNegativo.cs" />
     <Compile Include="Clases\GeneradorNormal.cs" />
     <Compile Include="Clases\GeneradorPoisson.cs" />
     <Compile Include="Clases\GeneradorUniforme.cs" />
     <Compile Include="Clases\PruebaChiCuadrado.cs" />
+    <Compile Include="Clases\PruebaKS.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>

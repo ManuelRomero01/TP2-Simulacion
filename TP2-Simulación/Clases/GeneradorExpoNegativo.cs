@@ -8,17 +8,17 @@ namespace TP2_Simulación.Clases
 {
     internal class GeneradorExpoNegativo
     {
-        //Definición de variables
+        // Definición de variables
         private double lambda;
         private double media;
         private int datos;
 
-        
 
-        //Definición del numero aleatorio
+        // Definición del número aleatorio
         private Random random = new Random();
         private double rnd;
 
+        // Constructor 
         public GeneradorExpoNegativo(double lambda, double media, double datos)
         {
             lambda = this.lambda;
@@ -26,6 +26,7 @@ namespace TP2_Simulación.Clases
             datos = this.datos;
         }
 
+        // Generador de variables aleatorias uniformes con Lambda
         public double[] generarVariablesAleatoriasLambda()
         {
             double[] x = new double[this.datos];
@@ -39,7 +40,7 @@ namespace TP2_Simulación.Clases
             return x;
         }
 
-
+        // Generador de variables aleatorias uniformes con Media
         public double[] generarVariablesAleatoriasMedia()
         {
             double[] x = new double[this.datos];

@@ -8,29 +8,33 @@ namespace TP2_Simulación.Clases
 {
     internal class GeneradorPoisson
     {
+        // Atributos de la clase
         private double lambda;
         private int datos;
 
-
+        // Generador de números pseudoaleatorios
         private Random random = new Random();
         private List<double> rnd;
 
-        public GeneradorPoisson(double lamda, int datos)
+        // Constructor de la clase
+        public GeneradorPoisson(double lambda, int datos)
         {
-            this.lambda = lamda;
+            this.lambda = lambda;
             this.datos = datos;
         }
 
+        // Generador de variables aleatorias uniformes
         public double[] generarVariablesAleatorias()
         {
             double[] x = new double[this.datos];
             for(int i = 0; i < this.datos; i++)
             {
-                x[i] = Math.Truncate(generarValorX() *10000) / 10000;
+                x[i] = Math.Truncate(generarValorX() * 10000) / 10000;
             }
 
             return x;
         }
+
 
         public double generarValorX()
         {

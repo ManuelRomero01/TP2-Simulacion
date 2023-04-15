@@ -152,7 +152,7 @@
             // 
             this.txtCantValores.Location = new System.Drawing.Point(681, 285);
             this.txtCantValores.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.txtCantValores.Mask = "0000";
+            this.txtCantValores.Mask = "00000";
             this.txtCantValores.Name = "txtCantValores";
             this.txtCantValores.Size = new System.Drawing.Size(308, 44);
             this.txtCantValores.TabIndex = 10;
@@ -162,7 +162,7 @@
             // 
             this.txtDesde.Location = new System.Drawing.Point(1327, 313);
             this.txtDesde.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.txtDesde.Mask = "0000";
+            this.txtDesde.Mask = "00000";
             this.txtDesde.Name = "txtDesde";
             this.txtDesde.Size = new System.Drawing.Size(184, 44);
             this.txtDesde.TabIndex = 12;
@@ -205,7 +205,7 @@
             // 
             this.txtHasta.Location = new System.Drawing.Point(1327, 387);
             this.txtHasta.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.txtHasta.Mask = "0000";
+            this.txtHasta.Mask = "00000";
             this.txtHasta.Name = "txtHasta";
             this.txtHasta.Size = new System.Drawing.Size(184, 44);
             this.txtHasta.TabIndex = 15;
