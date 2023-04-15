@@ -34,7 +34,7 @@ namespace TP2_Simulación
 
         private void ComboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-
+            
             lblPrimeraVariable.Visible = true;
             lblSegundaVariable.Visible = true;
             txtPrimeraVariable.Visible = true;
@@ -42,28 +42,33 @@ namespace TP2_Simulación
 
             VariablesDependientes = false;
 
+            // Segun la Selección de Tipo De Distribución
+            // Distribución Normal
             if (cmbTipoDistribucion.SelectedIndex == 0)
             {
-                lblPrimeraVariable.Text = "Media";
-                lblSegundaVariable.Text = "Desviacion estandar:";
+                lblPrimeraVariable.Text = "Media: ";
+                lblSegundaVariable.Text = "Desviacion estandar: ";
             }
+            // Distribución Uniforme
             if (cmbTipoDistribucion.SelectedIndex == 1)
             {
-                lblPrimeraVariable.Text = "Variable A:";
-                lblSegundaVariable.Text = "Variable B:";
+                lblPrimeraVariable.Text = "Variable A: ";
+                lblSegundaVariable.Text = "Variable B: ";
             }
+            // Distribución Exponencial Negativa
             if (cmbTipoDistribucion.SelectedIndex == 2)
             {
                 VariablesDependientes = true;
 
-                lblPrimeraVariable.Text = "Lambda:";
-                lblSegundaVariable.Text = "Media:";
+                lblPrimeraVariable.Text = "Lambda: ";
+                lblSegundaVariable.Text = "Media: ";
             }
+            // Distribución Poisson
             if (cmbTipoDistribucion.SelectedIndex == 3)
             {
                 lblSegundaVariable.Visible = false;
                 txtSegundaVariable.Visible = false;
-                lblPrimeraVariable.Text = "Lambda:";
+                lblPrimeraVariable.Text = "Lambda / Media: ";
             }
         }
 
