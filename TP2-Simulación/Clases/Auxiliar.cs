@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace TP2_Simulación.Clases
+﻿namespace TP2_Simulación.Clases
 {
     internal class Auxiliar
     {
@@ -75,6 +68,16 @@ namespace TP2_Simulación.Clases
             return izq;
         }
 
-
+        public static double calcularFactorial(double numero)
+        {
+            if (numero == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return numero * calcularFactorial(numero - 1);
+            }
+        }
     }
 }
