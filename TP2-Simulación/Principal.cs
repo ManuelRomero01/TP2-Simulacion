@@ -16,6 +16,7 @@ namespace TP2_Simulación
 
         public bool VariablesDependientes = false;
         public double[] ListaVariablesAleatorias;
+        public double[] ListaRandom;
         public bool primerMetodoExpNegativo;
         public bool PrimeraVariableEditada = false;
         public bool SegundaVariableEditada = false;
@@ -216,12 +217,14 @@ namespace TP2_Simulación
                         {
                             if (cmbTipoDistribucion.SelectedIndex == 0)
                             {
-                                GeneradorNormal generador = new GeneradorNormal();
-
-                                ListaVariablesAleatorias = generador.generarDistribucionNormal(
+                                
+                                GeneradorNormal generador = new GeneradorNormal(
                                     double.Parse(txtPrimeraVariable.Text),
                                     double.Parse(txtSegundaVariable.Text),
                                     int.Parse(txtCantValores.Text));
+
+                                (ListaVariablesAleatorias, ListaRandom) = generador.generarDistribucionNormal();
+                                    
                             }
                             if (cmbTipoDistribucion.SelectedIndex == 1)
                             {
@@ -230,7 +233,7 @@ namespace TP2_Simulación
                                     double.Parse(txtSegundaVariable.Text),
                                     int.Parse(txtCantValores.Text));
 
-                                ListaVariablesAleatorias = generador.generarRandomUniforme();
+                                (ListaVariablesAleatorias, ListaRandom) = generador.generarRandomUniforme();
                             }
                             if (cmbTipoDistribucion.SelectedIndex == 2)
                             {
@@ -241,11 +244,11 @@ namespace TP2_Simulación
 
                                 if (primerMetodoExpNegativo)
                                 {
-                                    ListaVariablesAleatorias = generador.generarVariablesAleatoriasLambda();
+                                    (ListaVariablesAleatorias, ListaRandom) = generador.generarVariablesAleatoriasLambda();
                                 }
                                 else
                                 {
-                                    ListaVariablesAleatorias = generador.generarVariablesAleatoriasMedia();
+                                    (ListaVariablesAleatorias, ListaRandom) = generador.generarVariablesAleatoriasMedia();
                                 }
                             }
                             if (cmbTipoDistribucion.SelectedIndex == 3)
@@ -254,8 +257,12 @@ namespace TP2_Simulación
                                     double.Parse(txtPrimeraVariable.Text),
                                     int.Parse(txtCantValores.Text));
 
-                                ListaVariablesAleatorias = generador.generarVariablesAleatorias();
+                                (ListaVariablesAleatorias, ListaRandom) = generador.generarVariablesAleatorias();
+                                
                             }
+
+                            populateDataTable(ListaRandom, ListaVariablesAleatorias, int.Parse(txtDesde.Text), int.Parse(txtHasta.Text));
+
                         }
                         else
                         {
@@ -268,6 +275,27 @@ namespace TP2_Simulación
             {
                 MessageBox.Show("Debe completar el campo de la cantidad de variables a generar.");
             }
+        }
+
+        public void populateDataTable(double[] randoms, double[] aleatoria, int desde, int hasta)
+        {
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("colIndex", typeof(int));
+            dataTable.Columns.Add("colRand", typeof(double));
+            dataTable.Columns.Add("colAleat", typeof(double));
+            
+            for (int i = desde; i <= hasta; i++)
+            {
+                DataRow row = dataTable.NewRow();
+                row["colIndex"] = i;
+                row["colRand"] = randoms[i];
+                row["colAleat"] = aleatoria[i];
+                dataTable.Rows.Add(row);
+            }
+
+            dataGridRND.DataSource = dataTable;
+
+            dataGridRND.Refresh();
         }
     }
 }

@@ -8,17 +8,17 @@ namespace TP2_Simulación.Clases
 {
     internal class GeneradorExpoNegativo
     {
-        // Definición de variables
+        // Definición de atributos
         private double lambda;
         private double media;
         private int datos;
 
 
-        // Definición del número aleatorio
+        // Generador de números pseudoaleatorios
         private Random random = new Random();
         private double rnd;
 
-        // Constructor 
+        // Constructor de la clase
         public GeneradorExpoNegativo(double lambda, double media, double datos)
         {
             lambda = this.lambda;
@@ -27,32 +27,33 @@ namespace TP2_Simulación.Clases
         }
 
         // Generador de variables aleatorias uniformes con Lambda
-        public double[] generarVariablesAleatoriasLambda()
+        public (double[], double[]) generarVariablesAleatoriasLambda()
         {
             double[] x = new double[this.datos];
+            double[] y = new double[this.datos];
             for (int i = 0; i < this.datos; i++)
             {
                 rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                y[i] = rnd;
                 x[i] = Math.Truncate(-1 / this.lambda) * Math.Log(1 - rnd * 10000) / 10000;
 
             }
 
-            return x;
+            return (x, y);
         }
 
         // Generador de variables aleatorias uniformes con Media
-        public double[] generarVariablesAleatoriasMedia()
+        public (double[], double[]) generarVariablesAleatoriasMedia()
         {
             double[] x = new double[this.datos];
+            double[] y = new double[this.datos];
             for (int i = 0; i < this.datos; i++)
             {
                 rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
                 x[i] = Math.Truncate((-this.media) * Math.Log(1 - rnd) * 10000) / 10000;
-
+                y[i] = rnd;
             }
-
-            return x;
-
+            return (x, y);
         }
     }
 }

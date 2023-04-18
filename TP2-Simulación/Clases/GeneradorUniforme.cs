@@ -9,7 +9,7 @@ namespace TP2_Simulación.Clases
 {
     internal class GeneradorUniforme
     {
-        // Atributos de la clase
+        // Definición de atributos
         private double desde;
         private double hasta; 
         private int cantidad; 
@@ -26,18 +26,19 @@ namespace TP2_Simulación.Clases
         }
 
         // Generador de variables aleatorias uniformes
-        public double[] generarRandomUniforme()
+        public (double[], double[]) generarRandomUniforme()
         {
             double rnd;
             double[] x = new double[cantidad];
-
+            double[] y = new double[cantidad];
             for (int i = 0; i < cantidad; i++)
             {
                 rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
-                x[i] = Math.Truncate((rnd * (hasta - desde) + desde) * 10000) / 10000; 
+                x[i] = Math.Truncate((rnd * (hasta - desde) + desde) * 10000) / 10000;
+                y[i] = rnd;
             }
 
-            return x;
+            return (x, y);
         }
     }
 }

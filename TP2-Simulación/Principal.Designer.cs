@@ -43,6 +43,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtHasta = new System.Windows.Forms.MaskedTextBox();
+            this.dataGridRND = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridRND)).BeginInit();
             this.SuspendLayout();
             // 
             // lblVariables
@@ -90,7 +92,7 @@
             // 
             // txtSegundaVariable
             // 
-            this.txtSegundaVariable.Location = new System.Drawing.Point(681, 569);
+            this.txtSegundaVariable.Location = new System.Drawing.Point(681, 574);
             this.txtSegundaVariable.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.txtSegundaVariable.Name = "txtSegundaVariable";
             this.txtSegundaVariable.Size = new System.Drawing.Size(308, 44);
@@ -211,12 +213,26 @@
             this.txtHasta.TabIndex = 15;
             this.txtHasta.ValidatingType = typeof(int);
             // 
+            // dataGridRND
+            // 
+            this.dataGridRND.AllowUserToAddRows = false;
+            this.dataGridRND.AllowUserToDeleteRows = false;
+            this.dataGridRND.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridRND.Location = new System.Drawing.Point(230, 666);
+            this.dataGridRND.Name = "dataGridRND";
+            this.dataGridRND.ReadOnly = true;
+            this.dataGridRND.RowHeadersWidth = 123;
+            this.dataGridRND.RowTemplate.Height = 46;
+            this.dataGridRND.Size = new System.Drawing.Size(1268, 552);
+            this.dataGridRND.TabIndex = 16;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(2540, 774);
+            this.ClientSize = new System.Drawing.Size(2554, 1423);
+            this.Controls.Add(this.dataGridRND);
             this.Controls.Add(this.txtHasta);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -237,6 +253,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.Load += new System.EventHandler(this.Principal_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridRND)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,6 +276,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox txtHasta;
+        private System.Windows.Forms.DataGridView dataGridRND;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAleatoria;
     }
 }
 

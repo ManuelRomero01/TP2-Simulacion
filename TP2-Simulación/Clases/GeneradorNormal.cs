@@ -8,27 +8,45 @@ namespace TP2_Simulación.Clases
 {
     internal class GeneradorNormal
     {
+        // Definición de atributos
+        private double media;
+        private int cantidad;
+        private double desviacion;
+
+        // Constructor de la clase
+        public GeneradorNormal(double desviacion, double media, int cantidad)
+        {
+            this.desviacion = desviacion;
+            this.media = media;
+            this.cantidad = cantidad;
+        }
+
+        // Generador de números pseudoaleatorios
+        private Random random = new Random();
+        double random1;
+        double random2;
+
+
         // Box Muller
-        public double calculoNormalN1(double random1, double random2, double desviacion, double media)
+        private double calculoNormalN1(double random1, double random2)
         {
             double resultado = (Math.Sqrt(-2 * Math.Log(random1)) * Math.Cos(2 * Math.PI * random2)) * desviacion + media;
             return resultado;
         }
         
-        public double calculoNormalN2(double random1, double random2, double desviacion, double media)
+        private double calculoNormalN2(double random1, double random2)
         {
             double resultado = (Math.Sqrt(-2 * Math.Log(random1)) * Math.Sin(2 * Math.PI * random2)) * desviacion + media;
             return resultado;
         }
 
-        // Generador de variables aleatorias uniformes
-        public double[] generarDistribucionNormal(double media, double desviacion, int cantidad)
+        // Generador de variables aleatorias normal
+        public (double[], double[]) generarDistribucionNormal()
         {
-            double[] listadoX = new double[cantidad];
+            double[] x = new double[cantidad];
+            double[] y = new double[cantidad];
             double variableAleatoria;
-            double random1;
-            double random2;
-            Random random = new Random();
+            
 
             random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
             random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
@@ -37,19 +55,19 @@ namespace TP2_Simulación.Clases
             {
                 if (i % 2 == 0)
                 {
-                    variableAleatoria = calculoNormalN1(random1, random2, desviacion, media);
+                    variableAleatoria = calculoNormalN1(random1, random2);
+                    y[i] = random1;
                 }
                 else
                 {             
-                    variableAleatoria = calculoNormalN2(random1, random2, desviacion, media);
-
-                    //Genere de nuevo dos random porque sino daba error, ver de solucionar esto
+                    variableAleatoria = calculoNormalN2(random1, random2);
+                    y[i] = random2;
                     random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
                     random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
                 }
-                listadoX[i] = variableAleatoria;
+                x[i] = variableAleatoria;
             }
-            return listadoX;
+            return (x, y);
         }
     }
 }

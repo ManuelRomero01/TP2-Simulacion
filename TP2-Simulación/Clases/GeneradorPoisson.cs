@@ -8,7 +8,7 @@ namespace TP2_Simulación.Clases
 {
     internal class GeneradorPoisson
     {
-        // Atributos de la clase
+        // Definición de atributos
         private double lambda;
         private int datos;
 
@@ -24,15 +24,17 @@ namespace TP2_Simulación.Clases
         }
 
         // Generador de variables aleatorias uniformes
-        public double[] generarVariablesAleatorias()
+        public (double[], double[]) generarVariablesAleatorias()
         {
             double[] x = new double[this.datos];
+            double[] y = new double[this.datos];
             for(int i = 0; i < this.datos; i++)
             {
                 x[i] = Math.Truncate(generarValorX() * 10000) / 10000;
+                y[i] = 0.00;
             }
 
-            return x;
+            return (x, y);
         }
 
 
@@ -44,12 +46,14 @@ namespace TP2_Simulación.Clases
 
             do
             {
-                double u = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                double u = Math.Truncate(random.NextDouble() * 10000) / 10000;   
                 p = p * u;
                 x = x + 1;
+                
 
             } while (p >= a);
-            return (x);
+            
+            return x;
         }
     }
 
