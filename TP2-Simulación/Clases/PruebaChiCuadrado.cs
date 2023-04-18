@@ -91,5 +91,14 @@ namespace TP2_Simulación.Clases
             
             return (tabla, chiTab);
         }
+
+        public bool pruebaAceptada(double valorFinal, double valorTabulado)
+        {
+            if (valorFinal < valorTabulado)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
