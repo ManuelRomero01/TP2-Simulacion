@@ -8,7 +8,7 @@ namespace TP2_Simulación.Clases
         private double precision = 0.0001;
         private double[][] tabla;
 
-        public (double[][], double) probarChiCuadrado(int intervalos, double[] valoresAleatorios, double significancia, double variable1, double variable2, int tipoDistr)
+        public (double[][], double, double) probarChiCuadrado(int intervalos, double[] valoresAleatorios, double significancia, double variable1, double variable2, int tipoDistr)
         {
             // Cálculo de los datos iniciales
             double min = valoresAleatorios.Min();
@@ -87,9 +87,10 @@ namespace TP2_Simulación.Clases
                 limInf = limInf + anchoIntervalo; 
             }
 
+            double cCalculado = tabla[intervalos -1][6];
             double chiTab = ValorTabulado.chiTabulado(intervalos, m, significancia);
             
-            return (tabla, chiTab);
+            return (tabla, chiTab, cCalculado);
         }
 
         public bool pruebaAceptada(double valorFinal, double valorTabulado)

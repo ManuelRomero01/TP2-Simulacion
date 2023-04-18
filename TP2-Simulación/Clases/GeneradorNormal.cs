@@ -14,7 +14,7 @@ namespace TP2_Simulación.Clases
         private double desviacion;
 
         // Constructor de la clase
-        public GeneradorNormal(double desviacion, double media, int cantidad)
+        public GeneradorNormal(double media, double desviacion, int cantidad)
         {
             this.desviacion = desviacion;
             this.media = media;
@@ -31,20 +31,22 @@ namespace TP2_Simulación.Clases
         private double calculoNormalN1(double random1, double random2)
         {
             double resultado = (Math.Sqrt(-2 * Math.Log(random1)) * Math.Cos(2 * Math.PI * random2)) * desviacion + media;
+           
             return resultado;
         }
         
         private double calculoNormalN2(double random1, double random2)
         {
             double resultado = (Math.Sqrt(-2 * Math.Log(random1)) * Math.Sin(2 * Math.PI * random2)) * desviacion + media;
+
             return resultado;
         }
 
         // Generador de variables aleatorias normal
-        public (double[], double[]) generarDistribucionNormal()
+        public (double[], string[]) generarDistribucionNormal()
         {
             double[] x = new double[cantidad];
-            double[] y = new double[cantidad];
+            string[] y = new string[cantidad];
             double variableAleatoria;
             
 
@@ -56,16 +58,17 @@ namespace TP2_Simulación.Clases
                 if (i % 2 == 0)
                 {
                     variableAleatoria = calculoNormalN1(random1, random2);
-                    y[i] = random1;
+                    y[i] = random1.ToString() + " | " + random2.ToString();
                 }
                 else
                 {             
                     variableAleatoria = calculoNormalN2(random1, random2);
-                    y[i] = random2;
+                    y[i] = random1.ToString() + " | " + random2.ToString();
+
                     random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
                     random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
                 }
-                x[i] = variableAleatoria;
+                x[i] = Math.Truncate(variableAleatoria * 10000) / 10000; 
             }
             return (x, y);
         }

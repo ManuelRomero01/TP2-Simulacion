@@ -44,6 +44,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtHasta = new System.Windows.Forms.MaskedTextBox();
             this.dataGridRND = new System.Windows.Forms.DataGridView();
+            this.btnLimpiarCampos = new System.Windows.Forms.Button();
+            this.btnVisualizar = new System.Windows.Forms.Button();
+            this.btnPrueba = new System.Windows.Forms.Button();
+            this.btnHistograma = new System.Windows.Forms.Button();
+            this.lblIntervalos = new System.Windows.Forms.Label();
+            this.lblCantIntervalos = new System.Windows.Forms.Label();
+            this.cmbIntervalos = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRND)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +138,7 @@
             "Uniforme",
             "Exponencial negativa",
             "Poisson"});
-            this.cmbTipoDistribucion.Location = new System.Drawing.Point(1846, 152);
+            this.cmbTipoDistribucion.Location = new System.Drawing.Point(1865, 155);
             this.cmbTipoDistribucion.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.cmbTipoDistribucion.Name = "cmbTipoDistribucion";
             this.cmbTipoDistribucion.Size = new System.Drawing.Size(428, 45);
@@ -141,10 +148,10 @@
             // btnGenerar
             // 
             this.btnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerar.Location = new System.Drawing.Point(1856, 427);
+            this.btnGenerar.Location = new System.Drawing.Point(1856, 262);
             this.btnGenerar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(437, 199);
+            this.btnGenerar.Size = new System.Drawing.Size(437, 197);
             this.btnGenerar.TabIndex = 9;
             this.btnGenerar.Text = "GENERAR";
             this.btnGenerar.UseVisualStyleBackColor = true;
@@ -217,21 +224,119 @@
             // 
             this.dataGridRND.AllowUserToAddRows = false;
             this.dataGridRND.AllowUserToDeleteRows = false;
+            this.dataGridRND.AllowUserToResizeRows = false;
+            this.dataGridRND.BackgroundColor = System.Drawing.Color.NavajoWhite;
             this.dataGridRND.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridRND.Location = new System.Drawing.Point(230, 666);
+            this.dataGridRND.Location = new System.Drawing.Point(227, 675);
+            this.dataGridRND.MultiSelect = false;
             this.dataGridRND.Name = "dataGridRND";
             this.dataGridRND.ReadOnly = true;
             this.dataGridRND.RowHeadersWidth = 123;
             this.dataGridRND.RowTemplate.Height = 46;
-            this.dataGridRND.Size = new System.Drawing.Size(1268, 552);
+            this.dataGridRND.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridRND.Size = new System.Drawing.Size(1374, 653);
             this.dataGridRND.TabIndex = 16;
+            this.dataGridRND.Visible = false;
+            // 
+            // btnLimpiarCampos
+            // 
+            this.btnLimpiarCampos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarCampos.Location = new System.Drawing.Point(1856, 486);
+            this.btnLimpiarCampos.Name = "btnLimpiarCampos";
+            this.btnLimpiarCampos.Size = new System.Drawing.Size(437, 143);
+            this.btnLimpiarCampos.TabIndex = 17;
+            this.btnLimpiarCampos.Text = "Limpiar Campos";
+            this.btnLimpiarCampos.UseVisualStyleBackColor = true;
+            this.btnLimpiarCampos.Click += new System.EventHandler(this.btnLimpiarCampos_Click);
+            // 
+            // btnVisualizar
+            // 
+            this.btnVisualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualizar.Location = new System.Drawing.Point(1148, 486);
+            this.btnVisualizar.Name = "btnVisualizar";
+            this.btnVisualizar.Size = new System.Drawing.Size(363, 143);
+            this.btnVisualizar.TabIndex = 18;
+            this.btnVisualizar.Text = "Modificar Rango";
+            this.btnVisualizar.UseVisualStyleBackColor = true;
+            this.btnVisualizar.Visible = false;
+            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
+            // 
+            // btnPrueba
+            // 
+            this.btnPrueba.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrueba.Location = new System.Drawing.Point(1856, 1002);
+            this.btnPrueba.Name = "btnPrueba";
+            this.btnPrueba.Size = new System.Drawing.Size(437, 151);
+            this.btnPrueba.TabIndex = 19;
+            this.btnPrueba.Text = "Generar Prueba";
+            this.btnPrueba.UseVisualStyleBackColor = true;
+            this.btnPrueba.Visible = false;
+            this.btnPrueba.Click += new System.EventHandler(this.btnPrueba_Click);
+            // 
+            // btnHistograma
+            // 
+            this.btnHistograma.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistograma.Location = new System.Drawing.Point(1856, 816);
+            this.btnHistograma.Name = "btnHistograma";
+            this.btnHistograma.Size = new System.Drawing.Size(437, 151);
+            this.btnHistograma.TabIndex = 21;
+            this.btnHistograma.Text = "Generar Histograma";
+            this.btnHistograma.UseVisualStyleBackColor = true;
+            this.btnHistograma.Visible = false;
+            this.btnHistograma.Click += new System.EventHandler(this.btnHistograma_Click);
+            // 
+            // lblIntervalos
+            // 
+            this.lblIntervalos.AutoSize = true;
+            this.lblIntervalos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIntervalos.Location = new System.Drawing.Point(1868, 675);
+            this.lblIntervalos.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lblIntervalos.Name = "lblIntervalos";
+            this.lblIntervalos.Size = new System.Drawing.Size(0, 46);
+            this.lblIntervalos.TabIndex = 22;
+            // 
+            // lblCantIntervalos
+            // 
+            this.lblCantIntervalos.AutoSize = true;
+            this.lblCantIntervalos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantIntervalos.Location = new System.Drawing.Point(1712, 706);
+            this.lblCantIntervalos.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.lblCantIntervalos.Name = "lblCantIntervalos";
+            this.lblCantIntervalos.Size = new System.Drawing.Size(427, 46);
+            this.lblCantIntervalos.TabIndex = 23;
+            this.lblCantIntervalos.Text = "Cantidad de Intervalos:";
+            this.lblCantIntervalos.Visible = false;
+            // 
+            // cmbIntervalos
+            // 
+            this.cmbIntervalos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIntervalos.FormattingEnabled = true;
+            this.cmbIntervalos.Items.AddRange(new object[] {
+            "5",
+            "8",
+            "10",
+            "12",
+            "15"});
+            this.cmbIntervalos.Location = new System.Drawing.Point(2248, 711);
+            this.cmbIntervalos.Name = "cmbIntervalos";
+            this.cmbIntervalos.Size = new System.Drawing.Size(140, 45);
+            this.cmbIntervalos.TabIndex = 24;
+            this.cmbIntervalos.Visible = false;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(2554, 1423);
+            this.ClientSize = new System.Drawing.Size(2464, 1397);
+            this.Controls.Add(this.cmbIntervalos);
+            this.Controls.Add(this.lblCantIntervalos);
+            this.Controls.Add(this.lblIntervalos);
+            this.Controls.Add(this.btnHistograma);
+            this.Controls.Add(this.btnPrueba);
+            this.Controls.Add(this.btnVisualizar);
+            this.Controls.Add(this.btnLimpiarCampos);
             this.Controls.Add(this.dataGridRND);
             this.Controls.Add(this.txtHasta);
             this.Controls.Add(this.label3);
@@ -249,6 +354,9 @@
             this.Controls.Add(this.lblCantidadValores);
             this.Controls.Add(this.lblVariables);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(2706, 1500);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(100, 80);
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
@@ -278,6 +386,13 @@
         private System.Windows.Forms.MaskedTextBox txtHasta;
         private System.Windows.Forms.DataGridView dataGridRND;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAleatoria;
+        private System.Windows.Forms.Button btnLimpiarCampos;
+        private System.Windows.Forms.Button btnVisualizar;
+        private System.Windows.Forms.Button btnPrueba;
+        private System.Windows.Forms.Button btnHistograma;
+        private System.Windows.Forms.Label lblIntervalos;
+        private System.Windows.Forms.Label lblCantIntervalos;
+        private System.Windows.Forms.ComboBox cmbIntervalos;
     }
 }
 

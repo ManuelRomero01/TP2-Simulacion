@@ -16,7 +16,7 @@ namespace TP2_Simulación
 
         public bool VariablesDependientes = false;
         public double[] ListaVariablesAleatorias;
-        public double[] ListaRandom;
+        public string[] ListaRandom;
         public bool primerMetodoExpNegativo;
         public bool PrimeraVariableEditada = false;
         public bool SegundaVariableEditada = false;
@@ -33,9 +33,21 @@ namespace TP2_Simulación
             lblSegundaVariable.Text = "Desviacion estandar:";
         }
 
+        private void limpiarInterfaz()
+        {
+            txtCantValores.Text = "";
+            txtPrimeraVariable.Text = "";
+            txtSegundaVariable.Text = "";
+            txtDesde.Text = "";
+            txtHasta.Text = "";
+            btnVisualizar.Visible = false;
+            dataGridRND.Visible = false;
+        }
+
         private void ComboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            
+
+            limpiarInterfaz();
             lblPrimeraVariable.Visible = true;
             lblSegundaVariable.Visible = true;
             txtPrimeraVariable.Visible = true;
@@ -71,7 +83,6 @@ namespace TP2_Simulación
                 txtSegundaVariable.Visible = false;
                 lblPrimeraVariable.Text = "Lambda / Media: ";
                 SegundaVariableEditada = true;
-
             }
         }
 
@@ -166,11 +177,11 @@ namespace TP2_Simulación
             {
                 if (int.Parse(txtHasta.Text) > int.Parse(txtDesde.Text))
                 {
-                    if (int.Parse(txtHasta.Text) < int.Parse(txtCantValores.Text))
+                    if (int.Parse(txtHasta.Text) <= int.Parse(txtCantValores.Text))
                     {
                         if (int.Parse(txtDesde.Text) > 0)
                         {
-                            if((int.Parse(txtDesde.Text) - int.Parse(txtHasta.Text))<= 5000)
+                            if((int.Parse(txtHasta.Text) - int.Parse(txtDesde.Text)) <=  5000)
                             {
                                 return true;
                             }
@@ -203,11 +214,19 @@ namespace TP2_Simulación
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+            //Visualizacion de botones y label
+            btnPrueba.Visible = true;
+            lblCantIntervalos.Visible = true;
+            cmbIntervalos.Visible = true;
+            btnVisualizar.Visible = true;
+            btnHistograma.Visible = true;
+
+            //Verifica que los valores estén cargados
             if (txtCantValores.Text != "")
             {
-                if (int.Parse(txtCantValores.Text) > 50000 && int.Parse(txtCantValores.Text) < 0)
+                if (int.Parse(txtCantValores.Text) > 50000 || int.Parse(txtCantValores.Text) < 0)
                 {
-                    MessageBox.Show("Ingrese un valor valido.");
+                    MessageBox.Show("Ingrese un valor valido en la cantidad de valores.");
                 }
                 else
                 {
@@ -262,6 +281,7 @@ namespace TP2_Simulación
                             }
 
                             populateDataTable(ListaRandom, ListaVariablesAleatorias, int.Parse(txtDesde.Text), int.Parse(txtHasta.Text));
+                            
 
                         }
                         else
@@ -277,25 +297,80 @@ namespace TP2_Simulación
             }
         }
 
-        public void populateDataTable(double[] randoms, double[] aleatoria, int desde, int hasta)
+        //Generar la labla con numeros y variables aleatorias
+        public void populateDataTable(string[] randoms, double[] aleatoria, int desde, int hasta)
         {
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("colIndex", typeof(int));
-            dataTable.Columns.Add("colRand", typeof(double));
-            dataTable.Columns.Add("colAleat", typeof(double));
+            dataTable.Columns.Add("Index", typeof(int));
+            dataTable.Columns.Add("Randoms", typeof(string));
+            dataTable.Columns.Add("Aleatorios", typeof(double));
             
-            for (int i = desde; i <= hasta; i++)
+            for (int i = desde-1; i <= hasta-1; i++)
             {
                 DataRow row = dataTable.NewRow();
-                row["colIndex"] = i;
-                row["colRand"] = randoms[i];
-                row["colAleat"] = aleatoria[i];
+                row["Index"] = i+1;
+                row["Randoms"] = randoms[i];
+                row["Aleatorios"] = aleatoria[i];
                 dataTable.Rows.Add(row);
             }
 
             dataGridRND.DataSource = dataTable;
+            dataGridRND.Visible = true;
 
             dataGridRND.Refresh();
+        }
+
+        //Funcion para limpiar los campos de las variables
+        private void btnLimpiarCampos_Click(object sender, EventArgs e)
+        {
+            limpiarInterfaz();
+            dataGridRND.Visible = false;
+        }
+
+        //Cambia los valores de los rangos que se visualizan en la tabla
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            populateDataTable(ListaRandom, ListaVariablesAleatorias, int.Parse(txtDesde.Text), int.Parse(txtHasta.Text));
+
+        }
+        public bool validarIntervalos()
+        {
+            if(cmbIntervalos.SelectedIndex == -1)
+            {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        //Genera las pruebas de bondad de ajuste
+        private void btnPrueba_Click(object sender, EventArgs e)
+        {
+            if (validarIntervalos())
+            {
+                Prueba ventana = new Prueba();
+                ventana.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Antes de generar la prueba o el histograma seleccione la cantidad de intervalos!");
+            }
+            
+        }
+
+        private void btnHistograma_Click(object sender, EventArgs e)
+        {
+            if (validarIntervalos())
+            {
+                Histograma ventana = new Histograma();
+                ventana.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Antes de generar la prueba o el histograma seleccione la cantidad de intervalos!");
+            }
         }
     }
 }

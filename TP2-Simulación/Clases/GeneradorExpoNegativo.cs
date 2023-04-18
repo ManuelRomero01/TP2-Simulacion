@@ -27,14 +27,14 @@ namespace TP2_Simulación.Clases
         }
 
         // Generador de variables aleatorias uniformes con Lambda
-        public (double[], double[]) generarVariablesAleatoriasLambda()
+        public (double[], string[]) generarVariablesAleatoriasLambda()
         {
             double[] x = new double[this.datos];
-            double[] y = new double[this.datos];
+            string[] y = new string[this.datos];
             for (int i = 0; i < this.datos; i++)
             {
                 rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
-                y[i] = rnd;
+                y[i] = rnd.ToString();
                 x[i] = Math.Truncate(-1 / this.lambda) * Math.Log(1 - rnd * 10000) / 10000;
 
             }
@@ -43,15 +43,15 @@ namespace TP2_Simulación.Clases
         }
 
         // Generador de variables aleatorias uniformes con Media
-        public (double[], double[]) generarVariablesAleatoriasMedia()
+        public (double[], string[]) generarVariablesAleatoriasMedia()
         {
             double[] x = new double[this.datos];
-            double[] y = new double[this.datos];
+            string[] y = new string[this.datos];
             for (int i = 0; i < this.datos; i++)
             {
                 rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
                 x[i] = Math.Truncate((-this.media) * Math.Log(1 - rnd) * 10000) / 10000;
-                y[i] = rnd;
+                y[i] = rnd.ToString();
             }
             return (x, y);
         }

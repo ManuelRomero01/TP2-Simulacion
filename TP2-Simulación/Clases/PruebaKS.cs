@@ -12,7 +12,7 @@ namespace TP2_Simulación.Clases
         private double precision = 0.0001;
         private double[][] tabla;
 
-        public (double[][], double) pruebaKS(int intervalos, double[] valoresAleatorios, double significancia, double variable1, double variable2, int tipoDistr)
+        public (double[][], double, double) pruebaKS(int intervalos, double[] valoresAleatorios, double significancia, double variable1, double variable2, int tipoDistr)
         {
             // Cálculo de los datos iniciales
             double min = valoresAleatorios.Min();
@@ -88,9 +88,10 @@ namespace TP2_Simulación.Clases
 
             }
 
+            double maxCalculado = tabla[intervalos - 1][10];
             double ksTabulado = ValorTabulado.ksTabulado(intervalos,significancia);
 
-            return (tabla, ksTabulado);
+            return (tabla, ksTabulado, maxCalculado);
         }
 
         public bool pruebaAceptada(double valorFinal, double valorTabulado)

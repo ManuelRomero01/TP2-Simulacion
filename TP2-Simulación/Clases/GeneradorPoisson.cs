@@ -24,14 +24,14 @@ namespace TP2_Simulación.Clases
         }
 
         // Generador de variables aleatorias uniformes
-        public (double[], double[]) generarVariablesAleatorias()
+        public (double[], string[]) generarVariablesAleatorias()
         {
             double[] x = new double[this.datos];
-            double[] y = new double[this.datos];
+            string[] y = new string[this.datos];
             for(int i = 0; i < this.datos; i++)
             {
                 x[i] = Math.Truncate(generarValorX() * 10000) / 10000;
-                y[i] = 0.00;
+                y[i] = "-";
             }
 
             return (x, y);
