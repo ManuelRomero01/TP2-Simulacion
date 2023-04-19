@@ -28,3 +28,11 @@ C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\obj\Deb
 C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.csproj.CoreCompileInputs.cache
 C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.exe
 C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.pdb
+C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\bin\Debug\TP2-Simulación.exe.config
+C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\bin\Debug\TP2-Simulación.exe
+C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\bin\Debug\TP2-Simulación.pdb
+C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\bin\Debug\MathNet.Numerics.dll
+C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\bin\Debug\MathNet.Numerics.xml
+C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2_Simulación.Histograma.resources
+C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2_Simulación.Prueba.resources
+C:\Users\andre\OneDrive\Documentos\GitHub\TP2-Simulacion\TP2-Simulación\obj\Debug\TP2-Simulación.csproj.CopyComplete

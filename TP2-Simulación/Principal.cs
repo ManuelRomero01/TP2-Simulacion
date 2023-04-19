@@ -339,7 +339,6 @@ namespace TP2_Simulación
         {
             if(cmbIntervalos.SelectedIndex == -1)
             {
-                
                 return false;
             }
             else
@@ -368,11 +367,25 @@ namespace TP2_Simulación
             
         }
 
+        private int ConseguirCantIntervalos(int index)
+        {
+            switch (index)
+            {
+                case 0 : return 5;
+                case 1 : return 8;
+                case 2 : return 10;
+                case 3 : return 12;
+                case 4 : return 15;
+                default: return 5;
+            }
+        }
+
+
         private void btnHistograma_Click(object sender, EventArgs e)
         {
             if (validarIntervalos())
             {
-                Histograma ventana = new Histograma();
+                Histograma ventana = new Histograma(ListaVariablesAleatorias, ConseguirCantIntervalos(cmbIntervalos.SelectedIndex));
                 ventana.ShowDialog();
             }
             else
