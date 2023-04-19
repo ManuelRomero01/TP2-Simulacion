@@ -7,13 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP2_Simulación.Clases;
 
 namespace TP2_Simulación
 {
     public partial class Prueba : Form
     {
-        public Prueba()
+        private double[][] tabla;
+        private double tabulado;
+        private double calculado;
+        private int cantIntervalos;
+        private double[] datos;
+        private double primeraVariable;
+        private double segundaVariable;
+        private int tipoDistribucion;
+
+        public Prueba(int cantIntervalos, double[] datos, double primeraVariable, double segundaVariable, int tipoDistr)
         {
+            this.cantIntervalos = cantIntervalos;
+            this.datos = datos;
+            this.primeraVariable = primeraVariable;
+            this.segundaVariable = segundaVariable;
+            this.tipoDistribucion = tipoDistr;
             InitializeComponent();
         }
 
@@ -28,9 +43,9 @@ namespace TP2_Simulación
         {
 
             DataTable dataTable = new DataTable();
-
+            
             // PRUEBA KS
-            if (cmbTipoPrueba.SelectedIndex == 0)
+            if (cmbTipoPrueba.SelectedIndex == 1)
             {
                 dataTable.Columns.Add("Número de Intervalo", typeof(int));
                 dataTable.Columns.Add("Límite Inferior", typeof(double));
@@ -45,7 +60,7 @@ namespace TP2_Simulación
                 dataTable.Columns.Add("Máximo", typeof(double));
 
 
-                for (int i = 0; i <= cantIntervalos; i++)
+                for (int i = 0; i < cantIntervalos; i++)
                 {
                     DataRow row = dataTable.NewRow();
                     row["Número de Intervalo"] = i + 1;
@@ -64,7 +79,7 @@ namespace TP2_Simulación
             }
 
             // PRUEBA CHI CUADRADO
-            if (cmbTipoPrueba.SelectedIndex == 1)
+            if (cmbTipoPrueba.SelectedIndex == 0)
             {
                 dataTable.Columns.Add("Número de Intervalo", typeof(int));
                 dataTable.Columns.Add("Límite Inferior", typeof(double));
@@ -75,7 +90,7 @@ namespace TP2_Simulación
                 dataTable.Columns.Add("((FO - FE)^2)/FE", typeof(double));
                 dataTable.Columns.Add("Sumatoria ((FO - FE)^2)/FE", typeof(double));             
 
-                for (int i = 0; i <= cantIntervalos; i++)
+                for (int i = 0; i < cantIntervalos; i++)
                 {
                     DataRow row = dataTable.NewRow();
                     row["Número de Intervalo"] = i + 1;
@@ -94,10 +109,61 @@ namespace TP2_Simulación
             gdrPrueba.Visible = true;
             gdrPrueba.Refresh();
         }
-
-        private void crearTabla(object sender, EventArgs e)
+        public void generarPrueba()
         {
-            // TERMINAR,llamar a prueba chi cuadrado o ks segun el index del combo box.
+            if (cmbTipoPrueba.SelectedIndex == 0)
+            {
+                // Chi-Cuadrado
+
+                (tabla, tabulado, calculado) = PruebaChiCuadrado.probarChiCuadrado(cantIntervalos, datos, Convert.ToDouble(cmbSignificancia.SelectedValue), primeraVariable, segundaVariable, tipoDistribucion);
+            }
+            else
+            {
+                // KS
+                (tabla, tabulado, calculado) = PruebaKS.pruebaKS(cantIntervalos, datos, Convert.ToDouble(cmbSignificancia.SelectedValue), primeraVariable, segundaVariable, tipoDistribucion);
+
+            }
+            populatePruebaDataTable(tabla, cantIntervalos);
+            txtCalculado.Text = calculado.ToString();
+            txtTabulado.Text = tabulado.ToString();
+            if (Auxiliar.pruebaAceptada(calculado, tabulado))
+            {
+                txtResultado.Text = "Hipótesis No Rechazada";
+                txtResultado.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                txtResultado.Text = "Hipótesis Rechazada";
+                txtResultado.BackColor = Color.LightCoral;
+            }
+        }
+        private void cmbTipoPrueba_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            generarPrueba();
+            
+        }
+
+        private void cmbSignificancia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbSignificancia.SelectedIndex != -1)
+            {
+                cmbTipoPrueba.Enabled = true;
+
+            }
+            if(cmbTipoPrueba.SelectedIndex != -1)
+            {
+                generarPrueba();
+            }
+
+        }
+
+        private void cmbTipoPrueba_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(cmbSignificancia.SelectedIndex== -1)
+            {
+                MessageBox.Show("Antes de seleccionar el tipo de prueba, seleccione el nivel de significancia.");
+
+            }
         }
     }
 }

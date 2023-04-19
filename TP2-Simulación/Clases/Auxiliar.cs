@@ -70,14 +70,22 @@
 
         public static double calcularFactorial(double numero)
         {
-            if (numero == 0)
+            if (numero <= 0)
             {
                 return 1;
             }
             else
-            {
+            {   
                 return numero * calcularFactorial(numero - 1);
             }
+        }
+        public static bool pruebaAceptada(double valorFinal, double valorTabulado)
+        {
+            if (valorFinal < valorTabulado)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

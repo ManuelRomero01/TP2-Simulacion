@@ -82,7 +82,7 @@
             this.txtPrimeraVariable.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.txtPrimeraVariable.Name = "txtPrimeraVariable";
             this.txtPrimeraVariable.Size = new System.Drawing.Size(308, 44);
-            this.txtPrimeraVariable.TabIndex = 4;
+            this.txtPrimeraVariable.TabIndex = 2;
             this.txtPrimeraVariable.Click += new System.EventHandler(this.txtPrimeraVariable_OnClick);
             this.txtPrimeraVariable.TextChanged += new System.EventHandler(this.txtPrimeraVariable_ValueChanged);
             // 
@@ -103,7 +103,7 @@
             this.txtSegundaVariable.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.txtSegundaVariable.Name = "txtSegundaVariable";
             this.txtSegundaVariable.Size = new System.Drawing.Size(308, 44);
-            this.txtSegundaVariable.TabIndex = 6;
+            this.txtSegundaVariable.TabIndex = 3;
             this.txtSegundaVariable.Click += new System.EventHandler(this.txtSegundaVariable_OnClick);
             this.txtSegundaVariable.TextChanged += new System.EventHandler(this.txtSegundaVariable_ValueChanged);
             // 
@@ -142,7 +142,7 @@
             this.cmbTipoDistribucion.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.cmbTipoDistribucion.Name = "cmbTipoDistribucion";
             this.cmbTipoDistribucion.Size = new System.Drawing.Size(428, 45);
-            this.cmbTipoDistribucion.TabIndex = 8;
+            this.cmbTipoDistribucion.TabIndex = 10;
             this.cmbTipoDistribucion.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // btnGenerar
@@ -152,7 +152,7 @@
             this.btnGenerar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(437, 197);
-            this.btnGenerar.TabIndex = 9;
+            this.btnGenerar.TabIndex = 6;
             this.btnGenerar.Text = "GENERAR";
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
@@ -164,7 +164,7 @@
             this.txtCantValores.Mask = "00000";
             this.txtCantValores.Name = "txtCantValores";
             this.txtCantValores.Size = new System.Drawing.Size(308, 44);
-            this.txtCantValores.TabIndex = 10;
+            this.txtCantValores.TabIndex = 1;
             this.txtCantValores.ValidatingType = typeof(int);
             // 
             // txtDesde
@@ -174,7 +174,7 @@
             this.txtDesde.Mask = "00000";
             this.txtDesde.Name = "txtDesde";
             this.txtDesde.Size = new System.Drawing.Size(184, 44);
-            this.txtDesde.TabIndex = 12;
+            this.txtDesde.TabIndex = 4;
             this.txtDesde.ValidatingType = typeof(int);
             // 
             // label1
@@ -217,7 +217,7 @@
             this.txtHasta.Mask = "00000";
             this.txtHasta.Name = "txtHasta";
             this.txtHasta.Size = new System.Drawing.Size(184, 44);
-            this.txtHasta.TabIndex = 15;
+            this.txtHasta.TabIndex = 5;
             this.txtHasta.ValidatingType = typeof(int);
             // 
             // dataGridRND
@@ -244,7 +244,7 @@
             this.btnLimpiarCampos.Location = new System.Drawing.Point(1856, 486);
             this.btnLimpiarCampos.Name = "btnLimpiarCampos";
             this.btnLimpiarCampos.Size = new System.Drawing.Size(437, 143);
-            this.btnLimpiarCampos.TabIndex = 17;
+            this.btnLimpiarCampos.TabIndex = 11;
             this.btnLimpiarCampos.Text = "Limpiar Campos";
             this.btnLimpiarCampos.UseVisualStyleBackColor = true;
             this.btnLimpiarCampos.Click += new System.EventHandler(this.btnLimpiarCampos_Click);
@@ -267,7 +267,7 @@
             this.btnPrueba.Location = new System.Drawing.Point(1856, 1002);
             this.btnPrueba.Name = "btnPrueba";
             this.btnPrueba.Size = new System.Drawing.Size(437, 151);
-            this.btnPrueba.TabIndex = 19;
+            this.btnPrueba.TabIndex = 9;
             this.btnPrueba.Text = "Generar Prueba";
             this.btnPrueba.UseVisualStyleBackColor = true;
             this.btnPrueba.Visible = false;
@@ -279,7 +279,7 @@
             this.btnHistograma.Location = new System.Drawing.Point(1856, 816);
             this.btnHistograma.Name = "btnHistograma";
             this.btnHistograma.Size = new System.Drawing.Size(437, 151);
-            this.btnHistograma.TabIndex = 21;
+            this.btnHistograma.TabIndex = 8;
             this.btnHistograma.Text = "Generar Histograma";
             this.btnHistograma.UseVisualStyleBackColor = true;
             this.btnHistograma.Visible = false;
@@ -317,10 +317,10 @@
             "10",
             "12",
             "15"});
-            this.cmbIntervalos.Location = new System.Drawing.Point(2248, 711);
+            this.cmbIntervalos.Location = new System.Drawing.Point(2244, 706);
             this.cmbIntervalos.Name = "cmbIntervalos";
             this.cmbIntervalos.Size = new System.Drawing.Size(140, 45);
-            this.cmbIntervalos.TabIndex = 24;
+            this.cmbIntervalos.TabIndex = 7;
             this.cmbIntervalos.Visible = false;
             // 
             // Principal
@@ -356,7 +356,7 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(2706, 1500);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(100, 80);
+            this.MinimumSize = new System.Drawing.Size(100, 103);
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";

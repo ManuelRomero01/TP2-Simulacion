@@ -24,7 +24,9 @@ namespace TP2_Simulación
         public Principal()
         {
             InitializeComponent();
+            
         }
+
 
         private void Principal_Load(object sender, EventArgs e)
         {
@@ -350,7 +352,13 @@ namespace TP2_Simulación
         {
             if (validarIntervalos())
             {
-                Prueba ventana = new Prueba();
+                double segundaVariable = 0;
+                if (cmbTipoDistribucion.SelectedIndex != 3) 
+                {
+                    segundaVariable = double.Parse(txtSegundaVariable.Text);
+                }
+
+                Prueba ventana = new Prueba(int.Parse(cmbIntervalos.Text), ListaVariablesAleatorias, double.Parse(txtPrimeraVariable.Text),segundaVariable, cmbTipoDistribucion.SelectedIndex);
                 ventana.ShowDialog();
             }
             else

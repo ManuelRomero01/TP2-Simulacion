@@ -9,11 +9,13 @@ namespace TP2_Simulación.Clases
 {
     internal class PruebaKS
     {
-        private double precision = 0.0001;
-        private double[][] tabla;
+        
 
-        public (double[][], double, double) pruebaKS(int intervalos, double[] valoresAleatorios, double significancia, double variable1, double variable2, int tipoDistr)
+        public static(double[][], double, double) pruebaKS(int intervalos, double[] valoresAleatorios, double significancia, double variable1, double variable2, int tipoDistr)
         {
+            double precision = 0.0001;
+            double[][] tabla;
+
             // Cálculo de los datos iniciales
             double min = valoresAleatorios.Min();
             double max = valoresAleatorios.Max();
@@ -69,7 +71,7 @@ namespace TP2_Simulación.Clases
                         break;
                 }
                 //calculo de la probabilidad esperada
-                pe = peI - peS;
+                pe = peS - peI;
                 //calculo de la frecuencia esperada
                 fe = po * cantidad; 
 
@@ -88,19 +90,12 @@ namespace TP2_Simulación.Clases
 
             }
 
-            double maxCalculado = tabla[intervalos - 1][10];
+            double maxCalculado = tabla[intervalos - 1][9];
             double ksTabulado = ValorTabulado.ksTabulado(intervalos,significancia);
 
             return (tabla, ksTabulado, maxCalculado);
         }
 
-        public bool pruebaAceptada(double valorFinal, double valorTabulado)
-        {
-            if (valorFinal < valorTabulado)
-            {
-                return true;
-            }
-            return false;
-        }
+        
     }
 }

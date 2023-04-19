@@ -18,7 +18,7 @@ namespace TP2_Simulación.Clases
         public static double probabilidadNormal(double x, double media, double desviacion)
         {
             double a = 1 / (desviacion * Math.Sqrt(2 * Math.PI));
-            double b = (Math.Exp((-1 / 2) * (Math.Pow(((x - media) / desviacion), 2))));
+            double b = Math.Exp(-0.5 * (Math.Pow(((x-media)/desviacion),2)));
             return a * b;
         }
 
@@ -28,10 +28,6 @@ namespace TP2_Simulación.Clases
             double a = Math.Pow(lambda, x) * Math.Exp(-lambda);
             return a / Auxiliar.calcularFactorial(x);
         }
-
-
-
-
 
     }
 }

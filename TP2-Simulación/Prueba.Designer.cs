@@ -38,6 +38,8 @@
             this.txtCalculado = new System.Windows.Forms.TextBox();
             this.lblResultado = new System.Windows.Forms.Label();
             this.txtResultado = new System.Windows.Forms.TextBox();
+            this.lblSignificancia = new System.Windows.Forms.Label();
+            this.cmbSignificancia = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gdrPrueba)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             // 
             this.lblTipoPrueba.AutoSize = true;
             this.lblTipoPrueba.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoPrueba.Location = new System.Drawing.Point(13, 100);
+            this.lblTipoPrueba.Location = new System.Drawing.Point(1149, 109);
             this.lblTipoPrueba.Name = "lblTipoPrueba";
             this.lblTipoPrueba.Size = new System.Drawing.Size(511, 46);
             this.lblTipoPrueba.TabIndex = 1;
@@ -64,14 +66,17 @@
             // cmbTipoPrueba
             // 
             this.cmbTipoPrueba.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoPrueba.Enabled = false;
             this.cmbTipoPrueba.FormattingEnabled = true;
             this.cmbTipoPrueba.Items.AddRange(new object[] {
             "Chi-Cuadrado",
             "Kolmorogov-Smirnov"});
-            this.cmbTipoPrueba.Location = new System.Drawing.Point(772, 105);
+            this.cmbTipoPrueba.Location = new System.Drawing.Point(1796, 110);
             this.cmbTipoPrueba.Name = "cmbTipoPrueba";
             this.cmbTipoPrueba.Size = new System.Drawing.Size(387, 45);
             this.cmbTipoPrueba.TabIndex = 2;
+            this.cmbTipoPrueba.SelectedIndexChanged += new System.EventHandler(this.cmbTipoPrueba_SelectedIndexChanged);
+            this.cmbTipoPrueba.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbTipoPrueba_MouseClick);
             // 
             // gdrPrueba
             // 
@@ -83,7 +88,7 @@
             this.gdrPrueba.ReadOnly = true;
             this.gdrPrueba.RowHeadersWidth = 123;
             this.gdrPrueba.RowTemplate.Height = 46;
-            this.gdrPrueba.Size = new System.Drawing.Size(2020, 861);
+            this.gdrPrueba.Size = new System.Drawing.Size(2152, 861);
             this.gdrPrueba.TabIndex = 3;
             // 
             // lblTabulado
@@ -101,7 +106,7 @@
             this.txtTabulado.Location = new System.Drawing.Point(579, 1093);
             this.txtTabulado.Name = "txtTabulado";
             this.txtTabulado.ReadOnly = true;
-            this.txtTabulado.Size = new System.Drawing.Size(211, 44);
+            this.txtTabulado.Size = new System.Drawing.Size(376, 44);
             this.txtTabulado.TabIndex = 5;
             // 
             // lblCalculado
@@ -119,7 +124,7 @@
             this.txtCalculado.Location = new System.Drawing.Point(579, 1183);
             this.txtCalculado.Name = "txtCalculado";
             this.txtCalculado.ReadOnly = true;
-            this.txtCalculado.Size = new System.Drawing.Size(211, 44);
+            this.txtCalculado.Size = new System.Drawing.Size(376, 44);
             this.txtCalculado.TabIndex = 7;
             // 
             // lblResultado
@@ -134,11 +139,36 @@
             // 
             // txtResultado
             // 
+            this.txtResultado.BackColor = System.Drawing.SystemColors.Control;
             this.txtResultado.Location = new System.Drawing.Point(579, 1268);
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(211, 44);
+            this.txtResultado.Size = new System.Drawing.Size(376, 44);
             this.txtResultado.TabIndex = 9;
+            // 
+            // lblSignificancia
+            // 
+            this.lblSignificancia.AutoSize = true;
+            this.lblSignificancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSignificancia.Location = new System.Drawing.Point(23, 105);
+            this.lblSignificancia.Name = "lblSignificancia";
+            this.lblSignificancia.Size = new System.Drawing.Size(434, 46);
+            this.lblSignificancia.TabIndex = 10;
+            this.lblSignificancia.Text = "Nivel de Significancia:";
+            // 
+            // cmbSignificancia
+            // 
+            this.cmbSignificancia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSignificancia.FormattingEnabled = true;
+            this.cmbSignificancia.Items.AddRange(new object[] {
+            "0,01",
+            "0,05",
+            "0,10"});
+            this.cmbSignificancia.Location = new System.Drawing.Point(611, 114);
+            this.cmbSignificancia.Name = "cmbSignificancia";
+            this.cmbSignificancia.Size = new System.Drawing.Size(387, 45);
+            this.cmbSignificancia.TabIndex = 11;
+            this.cmbSignificancia.SelectedIndexChanged += new System.EventHandler(this.cmbSignificancia_SelectedIndexChanged);
             // 
             // Prueba
             // 
@@ -147,7 +177,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(2093, 1468);
+            this.ClientSize = new System.Drawing.Size(2282, 1468);
+            this.Controls.Add(this.cmbSignificancia);
+            this.Controls.Add(this.lblSignificancia);
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.txtCalculado);
@@ -161,7 +193,6 @@
             this.Name = "Prueba";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prueba";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.gdrPrueba)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -181,5 +212,7 @@
         private System.Windows.Forms.TextBox txtCalculado;
         private System.Windows.Forms.Label lblResultado;
         private System.Windows.Forms.TextBox txtResultado;
+        private System.Windows.Forms.Label lblSignificancia;
+        private System.Windows.Forms.ComboBox cmbSignificancia;
     }
 }

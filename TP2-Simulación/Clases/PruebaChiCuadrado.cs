@@ -5,11 +5,12 @@ namespace TP2_Simulación.Clases
 {
     internal class PruebaChiCuadrado
     {
-        private double precision = 0.0001;
-        private double[][] tabla;
-
-        public (double[][], double, double) probarChiCuadrado(int intervalos, double[] valoresAleatorios, double significancia, double variable1, double variable2, int tipoDistr)
+        
+        public static (double[][], double, double) probarChiCuadrado(int intervalos, double[] valoresAleatorios, double significancia, double variable1, double variable2, int tipoDistr)
         {
+            double precision = 0.0001;
+            double[][] tabla;
+
             // Cálculo de los datos iniciales
             double min = valoresAleatorios.Min();
             double max = valoresAleatorios.Max();
@@ -71,11 +72,11 @@ namespace TP2_Simulación.Clases
                 }
 
                 // Calculo probabilidad esperada del intervalo
-                pe = peI - peS;
+                pe = peS - peI;
 
                 // Calculo frecuencia esperada y los cálculos de chi
                 fe = cantidad * pe;
-                difFrec = Math.Pow(fo - fe, 2);
+                difFrec = Math.Pow((fo - fe), 2);
                 c = difFrec / fe;
                 cAcum += c;
 
@@ -93,13 +94,6 @@ namespace TP2_Simulación.Clases
             return (tabla, chiTab, cCalculado);
         }
 
-        public bool pruebaAceptada(double valorFinal, double valorTabulado)
-        {
-            if (valorFinal < valorTabulado)
-            {
-                return true;
-            }
-            return false;
-        }
+        
     }
 }
