@@ -1,8 +1,10 @@
-﻿namespace TP2_Simulación.Clases
+﻿using System.Linq;
+
+namespace TP2_Simulación.Clases
 {
     internal class Auxiliar
     {
-        public static void quickSort(double[] vector, int izq, int der)
+        public static double[] quickSort(double[] vector, int izq, int der)
         {
             int i = izq;
             int j = der;
@@ -40,6 +42,7 @@
             {
                 quickSort(vector, i, der);
             }
+            return vector;
         }
 
         public static int busquedaBinaria(double[] vector, double numeroBuscado)
@@ -62,11 +65,31 @@
                 else
                 {
                     der = medio - 1;
-                }
+                }    
             }
 
             return izq;
         }
+
+
+        public static int buscarFrecuenciaObservada(double[] vector, double numeroBuscado)
+        {
+            int contador = 0;
+
+            for (int i = 0; i < vector.Count(); i++)
+            {
+                if (vector[i] <= numeroBuscado)
+                {
+                    contador += 1;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return contador;
+        }
+        
 
         public static double calcularFactorial(double numero)
         {
@@ -86,6 +109,17 @@
                 return true;
             }
             return false;
+        }
+
+        public static void agruparPorValor(double[] vector)
+        {
+            var grupo = vector.GroupBy(x => x);
+
+            foreach (var g in grupo)
+            {
+                
+                //Console.WriteLine($"Valor: {g.Key}, Cantidad: {g.Count()}");
+            }
         }
     }
 }

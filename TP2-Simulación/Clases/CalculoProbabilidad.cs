@@ -15,11 +15,14 @@ namespace TP2_Simulación.Clases
             return 1 - Math.Exp(-lambda * x);
         }
 
-        public static double probabilidadNormal(double x, double media, double desviacion)
+        public static double probabilidadNormal(double media, double desviacion, double limSup, double limInf)
         {
-            double a = 1 / (desviacion * Math.Sqrt(2 * Math.PI));
-            double b = Math.Exp(-0.5 * (Math.Pow(((x-media)/desviacion),2)));
-            return a * b;
+            double marcaDeClase = (limInf + limSup) / 2;
+            double difLimites = (limSup - limInf);
+
+            double a = Math.Exp(-0.5 * (Math.Pow(((marcaDeClase - media) / desviacion), 2)));
+            double b = desviacion * Math.Sqrt(2 * Math.PI);
+            return (a / b) * difLimites;
         }
 
         public static double probabilidadPoisson(double x, double lambda)

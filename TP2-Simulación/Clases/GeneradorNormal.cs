@@ -30,14 +30,14 @@ namespace TP2_Simulación.Clases
         // Box Muller
         private double calculoNormalN1(double random1, double random2)
         {
-            double resultado = (Math.Sqrt(-2 * Math.Log(random1)) * Math.Cos(2 * Math.PI * random2)) * desviacion + media;
+            double resultado = ((Math.Sqrt(-2 * Math.Log(random1)) * Math.Cos(2 * Math.PI * random2)) * desviacion) + media;
            
             return resultado;
         }
         
         private double calculoNormalN2(double random1, double random2)
         {
-            double resultado = (Math.Sqrt(-2 * Math.Log(random1)) * Math.Sin(2 * Math.PI * random2)) * desviacion + media;
+            double resultado = ((Math.Sqrt(-2 * Math.Log(random1)) * Math.Sin(2 * Math.PI * random2)) * desviacion) + media;
 
             return resultado;
         }
@@ -51,7 +51,19 @@ namespace TP2_Simulación.Clases
             
 
             random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+            //Evita valores infinitos
+            while (random1 == 0.00)
+            {
+                random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+            }
+
             random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+
+            //Evita valores infinitos
+            while (random2 == 0.00)
+            {
+                random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+            }
 
             for (int i = 0; i < cantidad ; i++)
             {
@@ -66,7 +78,19 @@ namespace TP2_Simulación.Clases
                     y[i] = random1.ToString() + " | " + random2.ToString();
 
                     random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                    //Evita valores infinitos
+                    while (random1 == 0.00)
+                    {
+                        random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                    }
+
                     random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+
+                    //Evita valores infinitos
+                    while (random2 == 0.00)
+                    {
+                        random2 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                    }
                 }
                 x[i] = Math.Truncate(variableAleatoria * 10000) / 10000; 
             }

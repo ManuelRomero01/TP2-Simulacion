@@ -46,7 +46,9 @@ namespace TP2_Simulación.Clases
 
             do
             {
+
                 double u = Math.Truncate(random.NextDouble() * 10000) / 10000;   
+                u = Math.Truncate(random.NextDouble() * 10000) / 10000;
                 p = p * u;
                 x = x + 1;
                 

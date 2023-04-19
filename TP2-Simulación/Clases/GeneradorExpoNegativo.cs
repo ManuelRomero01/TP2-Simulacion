@@ -19,23 +19,24 @@ namespace TP2_Simulación.Clases
         private double rnd;
 
         // Constructor de la clase
-        public GeneradorExpoNegativo(double lambda, double media, double datos)
+        public GeneradorExpoNegativo(double lambda, double media, int datos)
         {
-            lambda = this.lambda;
-            media = this.media;
-            datos = this.datos;
+            this.lambda = lambda;
+            this.media = media;
+            this.datos = datos;
         }
 
         // Generador de variables aleatorias uniformes con Lambda
         public (double[], string[]) generarVariablesAleatoriasLambda()
         {
-            double[] x = new double[this.datos];
-            string[] y = new string[this.datos];
-            for (int i = 0; i < this.datos; i++)
+            double[] x = new double[datos];
+            string[] y = new string[datos];
+            for (int i = 0; i < datos; i++)
             {
                 rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
+
                 y[i] = rnd.ToString();
-                x[i] = Math.Truncate(-1 / this.lambda) * Math.Log(1 - rnd * 10000) / 10000;
+                x[i] = Math.Truncate(((-1 / lambda) * Math.Log(1 - rnd)) * 10000) / 10000;
 
             }
 
@@ -45,12 +46,19 @@ namespace TP2_Simulación.Clases
         // Generador de variables aleatorias uniformes con Media
         public (double[], string[]) generarVariablesAleatoriasMedia()
         {
-            double[] x = new double[this.datos];
-            string[] y = new string[this.datos];
-            for (int i = 0; i < this.datos; i++)
+            double[] x = new double[datos];
+            string[] y = new string[datos];
+            for (int i = 0; i < datos; i++)
             {
+
                 rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
-                x[i] = Math.Truncate((-this.media) * Math.Log(1 - rnd) * 10000) / 10000;
+
+                while ( rnd == 0.00)
+                {
+                    rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                }
+
+                x[i] = Math.Truncate((-media) * Math.Log(1 - rnd) * 10000) / 10000;
                 y[i] = rnd.ToString();
             }
             return (x, y);

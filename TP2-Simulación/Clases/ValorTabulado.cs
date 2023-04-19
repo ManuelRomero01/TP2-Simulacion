@@ -1,10 +1,5 @@
 ﻿using MathNet.Numerics.Distributions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TP2_Simulación.Clases;
 
 namespace TP2_Simulación.Clases
 {
@@ -95,10 +90,15 @@ namespace TP2_Simulación.Clases
         public static double chiTabulado(int k, int m, double significancia)
         {
             double gradosDeLibertad = k - 1 - m;
+
+            if (gradosDeLibertad <= 0)
+            {
+                return 0;
+            }
+
             double result = ChiSquared.InvCDF(gradosDeLibertad, 1 - significancia);
             
-
-            return result;
+            return Math.Truncate(result * 10000) / 10000;
         }
 
     }
