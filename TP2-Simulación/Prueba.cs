@@ -15,6 +15,7 @@ namespace TP2_Simulación
     public partial class Prueba : Form
     {
         private double[][] tabla;
+        private string[][] tabla_discreta;
         private double tabulado;
         private double calculado;
         private int cantIntervalos;
@@ -77,6 +78,32 @@ namespace TP2_Simulación
                     row["Máximo"] = tabla[i][9];
                     dataTable.Rows.Add(row);
                 }
+
+                /*
+                dataTable.Columns.Add("Número de Intervalo", typeof(int));
+                dataTable.Columns.Add("Límite Inferior", typeof(double));
+                dataTable.Columns.Add("Límite Superior", typeof(double));
+                dataTable.Columns.Add("Valor/Valores", typeof(int));
+                dataTable.Columns.Add("Frecuencia Observada (FO)", typeof(int));
+                dataTable.Columns.Add("Frecuencia Esperada (FE)", typeof(int));
+                dataTable.Columns.Add("(FO - FE)^2", typeof(int));
+                dataTable.Columns.Add("((FO - FE)^2)/FE", typeof(double));  //C
+                dataTable.Columns.Add("Sumatoria ((FO - FE)^2)/FE", typeof(double)); // C(ac)
+
+                for (int i = 0; i < cantIntervalos; i++)
+                {
+                    DataRow row = dataTable.NewRow();
+
+                    dataTable.Columns.Add("Frecuencia Observada (FO)", typeof(int));
+                    dataTable.Columns.Add("Frecuencia Esperada (FE)", typeof(double));
+                    dataTable.Columns.Add("Probabilidad Observada (PO)", typeof(double));
+                    dataTable.Columns.Add("Probabilidad Esperada (PE)", typeof(double));
+                    dataTable.Columns.Add("Probabilidad Observada Acumulada (POA)", typeof(double));
+                    dataTable.Columns.Add("Probabilidad Esperada Acumulada (PEA)", typeof(double));
+                    dataTable.Columns.Add("Diferencia de |POA - PEA|", typeof(double));
+                    dataTable.Columns.Add("Máximo", typeof(double));
+                }
+                */
             }
 
             // PRUEBA CHI CUADRADO
@@ -111,39 +138,56 @@ namespace TP2_Simulación
                         dataTable.Rows.Add(row);
                     }
                 }
-                else
-                {
-                    dataTable.Columns.Add("Valor/Valores", typeof(int));
-                    dataTable.Columns.Add("Frecuencia Observada (FO)", typeof(int));
-                    dataTable.Columns.Add("Frecuencia Esperada (FE)", typeof(double));
-                    dataTable.Columns.Add("(FO - FE)^2", typeof(double));
-                    dataTable.Columns.Add("((FO - FE)^2)/FE", typeof(double));
-                    dataTable.Columns.Add("Sumatoria ((FO - FE)^2)/FE", typeof(double));
-
-                    //TERMINAR
-                    for (int i = 0; i < cantIntervalos; i++)
-                    {
-                        DataRow row = dataTable.NewRow();
-                        row["Número de Intervalo"] = i + 1;
-                        row["Límite Inferior"] = tabla[i][0];
-                        row["Límite Superior"] = tabla[i][1];
-                        row["Frecuencia Observada (FO)"] = tabla[i][2];
-                        row["Frecuencia Esperada (FE)"] = tabla[i][3];
-                        row["(FO - FE)^2"] = tabla[i][4];
-                        row["((FO - FE)^2)/FE"] = tabla[i][5];
-                        row["Sumatoria ((FO - FE)^2)/FE"] = tabla[i][6];
-                        dataTable.Rows.Add(row);
-                    }
-                }
             }
-
             gdrPrueba.DataSource = dataTable;
             gdrPrueba.Visible = true;
             gdrPrueba.Refresh();
         }
-        public void generarPrueba()
+
+
+        public void populatePruebaDataTableDiscreta(string[][] tabla_discreta, int cantIntervalos)
+        {
+            DataTable dataTable = new DataTable();
+            // PRUEBA CHI CUADRADO
+            if (cmbTipoPrueba.SelectedIndex == 0)
+            {
+                if (tipoDistribucion == 3)
+                {
+                    dataTable.Columns.Add("Número de Index", typeof(int));
+                    dataTable.Columns.Add("Valor/Valores", typeof(string));
+                    dataTable.Columns.Add("Frecuencia Observada (FO)", typeof(string));
+                    dataTable.Columns.Add("Frecuencia Esperada (FE)", typeof(string));
+                    dataTable.Columns.Add("(FO - FE)^2", typeof(string));
+                    dataTable.Columns.Add("((FO - FE)^2)/FE", typeof(string));
+                    dataTable.Columns.Add("Sumatoria ((FO - FE)^2)/FE", typeof(string));
+
+                    for (int i = 0; i < tabla_discreta.Count(); i++)
+                    {
+                        if (tabla_discreta[i] is null)
+                        {
+                            continue;
+                        }
+                        DataRow row = dataTable.NewRow();
+                        row["Número de Index"] = i + 1;
+                        row["Valor/Valores"] = tabla_discreta[i][0];
+                        row["Frecuencia Observada (FO)"] = tabla_discreta[i][1];
+                        row["Frecuencia Esperada (FE)"] = tabla_discreta[i][2];
+                        row["(FO - FE)^2"] = tabla_discreta[i][3];
+                        row["((FO - FE)^2)/FE"] = tabla_discreta[i][4];
+                        row["Sumatoria ((FO - FE)^2)/FE"] = tabla_discreta[i][5];
+                        dataTable.Rows.Add(row);
+                    }
+                }
+            }
+            gdrPrueba.DataSource = dataTable;
+            gdrPrueba.Visible = true;
+            gdrPrueba.Refresh();
+        }
+
+        private void generarPrueba()
         {
             bool poissonKS = false;
+            bool poissonCHI = false;
 
             if (cmbTipoPrueba.SelectedIndex == 0)
             {
@@ -159,11 +203,9 @@ namespace TP2_Simulación
                 }
                 else
                 {
-                    // Comento porque me da error
-                    //(tabla, tabulado, calculado) = PruebaChiCuadrado.probarChiCuadradoDiscreta(cantIntervalos, datos, Convert.ToDouble(cmbSignificancia.SelectedValue), primeraVariable, segundaVariable, tipoDistribucion);
+                    (tabla_discreta, tabulado, calculado) = PruebaChiCuadrado.probarChiCuadradoDiscreta(datos, Convert.ToDouble(cmbSignificancia.SelectedItem), primeraVariable);
+                    poissonCHI = true;
                 }
-
-
             }
             else
             {
@@ -176,14 +218,22 @@ namespace TP2_Simulación
                 }
                 else
                 {
-                    (tabla, tabulado, calculado) = PruebaKS.pruebaKS(cantIntervalos, datos, Convert.ToDouble(cmbSignificancia.SelectedValue), primeraVariable, segundaVariable, tipoDistribucion);
+                    (tabla, tabulado, calculado) = PruebaKS.pruebaKS(cantIntervalos, datos, Convert.ToDouble(cmbSignificancia.SelectedItem), primeraVariable, segundaVariable, tipoDistribucion);
                     poissonKS = false;
                 }
 
             }
             if (!poissonKS)
             {
-                populatePruebaDataTable(tabla, cantIntervalos);
+                if (!poissonCHI)
+                {
+                    populatePruebaDataTable(tabla, cantIntervalos);
+                }
+                else
+                {
+                    populatePruebaDataTableDiscreta(tabla_discreta, cantIntervalos);
+                }
+
                 txtCalculado.Text = calculado.ToString();
                 txtTabulado.Text = tabulado.ToString();
                 if (Auxiliar.pruebaAceptada(calculado, tabulado))

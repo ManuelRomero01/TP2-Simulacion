@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace TP2_Simulación.Clases
 {
@@ -111,15 +112,19 @@ namespace TP2_Simulación.Clases
             return false;
         }
 
-        public static void agruparPorValor(double[] vector)
+        public static Dictionary<int, int> agruparPorValor(double[] listaVariablesPoisson)
         {
-            var grupo = vector.GroupBy(x => x);
+
+            var grupo = listaVariablesPoisson.GroupBy(x => x);
+            Dictionary<int, int> valoresAgrupados = new Dictionary<int, int>();
 
             foreach (var g in grupo)
             {
-                
-                //Console.WriteLine($"Valor: {g.Key}, Cantidad: {g.Count()}");
+                valoresAgrupados.Add((int)g.Key, g.Count());
             }
-        }
+
+            return valoresAgrupados;
+        }             
+
     }
 }

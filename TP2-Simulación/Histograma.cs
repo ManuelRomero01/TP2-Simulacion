@@ -30,36 +30,53 @@ namespace TP2_Simulación
 
         private void populate_graph()
         {
-            // Calculate the bin width
+            // Create a new series for the histogram
+            var series = new Series("Observaciones");
+            chtHistograma.Series[0].IsVisibleInLegend = false;
+            series.ChartType = SeriesChartType.Column;
+            series.XValueType = ChartValueType.Double;
+
+            // Add some sample data to the series
             double min = Math.Truncate(data.Min() * 10000) / 10000;
             double max = Math.Truncate(data.Max() * 10000) / 10000;
-            double binWidth = (max - min + 1) / (double)numIntervalos;
+            double intervalWidth = (max - min) / numIntervalos;
 
-            // Create an array to store the bin boundaries
-            double[] binBoundaries = new double[numIntervalos + 1];
-            for (int i = 0; i <= numIntervalos; i++)
+            // Calculate the frequency of each interval
+            int[] freqs = new int[numIntervalos];
+            foreach (double d in data)
             {
-                binBoundaries[i] = min + i * binWidth;
+                int index = (int)((d - data.Min()) / intervalWidth);
+                if (index >= numIntervalos)
+                {
+                    index = numIntervalos - 1;
+                }
+                freqs[index]++;
+                
             }
 
-            // Count the number of occurrences of each value in the specified bins
-            var counts = from d in data
-                         let binIndex = Math.Min((int)((d - min) / binWidth), numIntervalos - 1)
-                         group d by binIndex into g
-                         orderby g.Key
-                         select new { BinLowerBound = Math.Truncate(binBoundaries[g.Key] * 10000) / 10000, BinUpperBound = Math.Truncate(binBoundaries[g.Key + 1] * 10000) / 10000, Count = g.Count() };
+            // Add the interval boundaries and frequencies to the series
+            for (int i = 0; i < numIntervalos; i++)
+            {
+                double xValue = data.Min() + i * intervalWidth;
+                series.Points.AddXY(xValue, freqs[i]);
+                series.Points[i].Label = freqs[i].ToString();
+            }
 
-            // Add the data to the Chart control
-            chtHistograma.Series[0].Points.DataBind(counts, "BinLowerBound", "Count", $"ToolTip=Bin [{0:#,##0.0} - {1:#,##0.0}): {2:#,##0}");
+            // Add the series to the chart and adjust the X-axis interval
+            chtHistograma.Series.Add(series);
+            chtHistograma.ChartAreas[0].AxisX.Interval = intervalWidth;
+
+
             chtHistograma.Series[0].XValueType = ChartValueType.Double;
 
             // Set the X-axis properties
-            chtHistograma.ChartAreas[0].AxisX.Minimum = min - binWidth / 2.0;
-            chtHistograma.ChartAreas[0].AxisX.Maximum = binBoundaries[numIntervalos];
-            chtHistograma.ChartAreas[0].AxisX.Interval = binWidth;
+            chtHistograma.ChartAreas[0].AxisX.Title = "Límites Inferiores";
+            chtHistograma.ChartAreas[0].AxisY.Title = "Cantidad Observada";
+            chtHistograma.ChartAreas[0].AxisX.Minimum = min;
+            chtHistograma.ChartAreas[0].AxisX.Maximum = max;
             chtHistograma.ChartAreas[0].AxisX.IntervalOffset = 0;
-            chtHistograma.ChartAreas[0].AxisX.IntervalOffsetType = DateTimeIntervalType.Number;
+            chtHistograma.ChartAreas[0].AxisX.LabelStyle.Format = "0.0000";
+            chtHistograma.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
         }
-
     }
 }

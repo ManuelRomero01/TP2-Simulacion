@@ -58,14 +58,14 @@ namespace TP2_Simulación.Clases
             {
                 switch (significancia)
                 {
-                    case 0.1:
-                        valorCritico = tabla[n][0];
+                    case 0.10:
+                        valorCritico = tabla[n-1][0];
                         break;
                     case 0.05:
-                        valorCritico = tabla[n][1];
+                        valorCritico = tabla[n-1][1];
                         break;
                     case 0.01:
-                        valorCritico = tabla[n][2];
+                        valorCritico = tabla[n-1][2];
                         break;
                 }
             }
@@ -84,7 +84,7 @@ namespace TP2_Simulación.Clases
                         break;
                 }
             }
-            return valorCritico;
+            return Math.Truncate(valorCritico * 10000) / 10000; ;
         }
 
         public static double chiTabulado(int k, int m, double significancia)

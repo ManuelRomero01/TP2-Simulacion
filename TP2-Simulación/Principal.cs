@@ -85,6 +85,7 @@ namespace TP2_Simulación
                 txtSegundaVariable.Visible = false;
                 lblPrimeraVariable.Text = "Lambda / Media: ";
                 SegundaVariableEditada = true;
+
             }
         }
 
@@ -111,6 +112,8 @@ namespace TP2_Simulación
 
             if (VariablesDependientes && primerMetodoExpNegativo)
             {
+                
+                
                 try
                 {
                     if (double.Parse(txtPrimeraVariable.Text) == 0)
@@ -121,6 +124,7 @@ namespace TP2_Simulación
                     {
                         txtSegundaVariable.Text = (1 / double.Parse(txtPrimeraVariable.Text)).ToString();
                     }
+                    
                 }
                 catch (Exception) 
                 {
@@ -213,6 +217,24 @@ namespace TP2_Simulación
             }
             return false;
         }
+        private void verificarVariablesCero()
+        {
+            //if (double.Parse(txtPrimeraVariable.Text) == 0 || double.Parse(txtSegundaVariable.Text) == 0)
+//            {
+//
+//                MessageBox.Show("Alguna de las variables es igual a cero, cambie esos valores.");
+//            }
+            
+        }
+        private void validarVariablesUniformes()
+        {
+            double A = double.Parse(txtPrimeraVariable.Text);
+            double B = double.Parse(txtSegundaVariable.Text);
+            if (A >= B)
+            {
+                MessageBox.Show("El valor de A no puede ser mayor al de B, ingrese valores nuevamente");
+            }
+        }
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
@@ -221,8 +243,8 @@ namespace TP2_Simulación
             lblCantIntervalos.Visible = true;
             cmbIntervalos.Visible = true;
             btnVisualizar.Visible = true;
-            btnHistograma.Visible = true;
-
+            btnHistograma.Visible = true;      
+            
             //Verifica que los valores estén cargados
             if (txtCantValores.Text != "")
             {
@@ -238,7 +260,7 @@ namespace TP2_Simulación
                         {
                             if (cmbTipoDistribucion.SelectedIndex == 0)
                             {
-                                
+                                cmbIntervalos.Enabled = true;
                                 GeneradorNormal generador = new GeneradorNormal(
                                     double.Parse(txtPrimeraVariable.Text),
                                     double.Parse(txtSegundaVariable.Text),
@@ -249,6 +271,8 @@ namespace TP2_Simulación
                             }
                             if (cmbTipoDistribucion.SelectedIndex == 1)
                             {
+                                validarVariablesUniformes();
+                                cmbIntervalos.Enabled = true;
                                 GeneradorUniforme generador = new GeneradorUniforme(
                                     double.Parse(txtPrimeraVariable.Text),
                                     double.Parse(txtSegundaVariable.Text),
@@ -258,6 +282,8 @@ namespace TP2_Simulación
                             }
                             if (cmbTipoDistribucion.SelectedIndex == 2)
                             {
+                                verificarVariablesCero();                            
+                                cmbIntervalos.Enabled = true;
                                 GeneradorExpoNegativo generador = new GeneradorExpoNegativo(
                                     double.Parse(txtPrimeraVariable.Text),
                                     double.Parse(txtSegundaVariable.Text),
@@ -274,6 +300,8 @@ namespace TP2_Simulación
                             }
                             if (cmbTipoDistribucion.SelectedIndex == 3)
                             {
+                                verificarVariablesCero();                            
+                                cmbIntervalos.Enabled = false;
                                 GeneradorPoisson generador = new GeneradorPoisson(
                                     double.Parse(txtPrimeraVariable.Text),
                                     int.Parse(txtCantValores.Text));
@@ -349,20 +377,26 @@ namespace TP2_Simulación
         //Genera las pruebas de bondad de ajuste
         private void btnPrueba_Click(object sender, EventArgs e)
         {
-            if (validarIntervalos())
+            if (cmbTipoDistribucion.SelectedIndex != 3)
             {
-                double segundaVariable = 0;
-                if (cmbTipoDistribucion.SelectedIndex != 3) 
+                if (validarIntervalos())
                 {
-                    segundaVariable = double.Parse(txtSegundaVariable.Text);
-                }
+                    double segundaVariable = double.Parse(txtSegundaVariable.Text); 
 
-                Prueba ventana = new Prueba(int.Parse(cmbIntervalos.Text), ListaVariablesAleatorias, double.Parse(txtPrimeraVariable.Text),segundaVariable, cmbTipoDistribucion.SelectedIndex);
-                ventana.ShowDialog();
+                    Prueba ventana = new Prueba(int.Parse(cmbIntervalos.Text), ListaVariablesAleatorias, double.Parse(txtPrimeraVariable.Text), segundaVariable, cmbTipoDistribucion.SelectedIndex);
+                    ventana.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Antes de generar la prueba o el histograma seleccione la cantidad de intervalos!");
+                }
             }
             else
             {
-                MessageBox.Show("Antes de generar la prueba o el histograma seleccione la cantidad de intervalos!");
+                double segundaVariable = 0.00;
+                int intervalos = 0;
+                Prueba ventana = new Prueba(intervalos, ListaVariablesAleatorias, double.Parse(txtPrimeraVariable.Text), segundaVariable, cmbTipoDistribucion.SelectedIndex);
+                ventana.ShowDialog();
             }
             
         }
@@ -383,14 +417,23 @@ namespace TP2_Simulación
 
         private void btnHistograma_Click(object sender, EventArgs e)
         {
-            if (validarIntervalos())
+
+            if (cmbTipoDistribucion.SelectedIndex != 3)
             {
-                Histograma ventana = new Histograma(ListaVariablesAleatorias, ConseguirCantIntervalos(cmbIntervalos.SelectedIndex));
-                ventana.ShowDialog();
+                if (validarIntervalos())
+                {
+                    Histograma ventana = new Histograma(ListaVariablesAleatorias, ConseguirCantIntervalos(cmbIntervalos.SelectedIndex));
+                    ventana.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Antes de generar la prueba o el histograma seleccione la cantidad de intervalos!");
+                }
             }
             else
             {
-                MessageBox.Show("Antes de generar la prueba o el histograma seleccione la cantidad de intervalos!");
+                Histograma ventana = new Histograma(ListaVariablesAleatorias, ConseguirCantIntervalos(cmbIntervalos.SelectedIndex));
+                ventana.ShowDialog();
             }
         }
     }
