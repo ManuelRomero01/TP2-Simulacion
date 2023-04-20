@@ -52,10 +52,6 @@
   <ItemGroup>
     <Compile Include="Clases\Auxiliar.cs" />
     <Compile Include="Clases\CalculoProbabilidad.cs" />
-    <Compile Include="Clases\GeneradorExpoNegativo.cs" />
-    <Compile Include="Clases\GeneradorNormal.cs" />
-    <Compile Include="Clases\GeneradorPoisson.cs" />
-    <Compile Include="Clases\GeneradorUniforme.cs" />
     <Compile Include="Clases\PruebaChiCuadrado.cs" />
     <Compile Include="Clases\PruebaKS.cs" />
     <Compile Include="Clases\ValorTabulado.cs" />
@@ -110,6 +106,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibGeneradores\LibGeneradores.csproj">
+      <Project>{266f7dea-84ab-4f61-b020-477863f5df8b}</Project>
+      <Name>LibGeneradores</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

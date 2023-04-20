@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP2_Simulación.Clases;
+using LibGeneradores;
 
 namespace TP2_Simulación
 {
@@ -45,7 +46,11 @@ namespace TP2_Simulación
             btnVisualizar.Visible = false;
             dataGridRND.Visible = false;
         }
-
+        private void sacarBotones()
+        {
+            btnHistograma.Visible = false;
+            btnPrueba.Visible = false;
+        }
         private void ComboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
 
@@ -61,26 +66,32 @@ namespace TP2_Simulación
             // Distribución Normal
             if (cmbTipoDistribucion.SelectedIndex == 0)
             {
+                sacarBotones();
                 lblPrimeraVariable.Text = "Media: ";
                 lblSegundaVariable.Text = "Desviacion estandar: ";
             }
             // Distribución Uniforme
             if (cmbTipoDistribucion.SelectedIndex == 1)
             {
+                sacarBotones();
                 lblPrimeraVariable.Text = "Variable A: ";
                 lblSegundaVariable.Text = "Variable B: ";
             }
             // Distribución Exponencial Negativa
             if (cmbTipoDistribucion.SelectedIndex == 2)
             {
+                
                 VariablesDependientes = true;
-
+                sacarBotones();
                 lblPrimeraVariable.Text = "Lambda: ";
                 lblSegundaVariable.Text = "Media: ";
             }
             // Distribución Poisson
             if (cmbTipoDistribucion.SelectedIndex == 3)
             {
+                sacarBotones();
+                cmbIntervalos.SelectedIndex = -1;
+                cmbIntervalos.Enabled = false;
                 lblSegundaVariable.Visible = false;
                 txtSegundaVariable.Visible = false;
                 lblPrimeraVariable.Text = "Lambda / Media: ";
@@ -410,7 +421,7 @@ namespace TP2_Simulación
                 case 2 : return 10;
                 case 3 : return 12;
                 case 4 : return 15;
-                default: return 5;
+                default: return 10;
             }
         }
 

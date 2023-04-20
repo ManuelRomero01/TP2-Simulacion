@@ -30,18 +30,18 @@ namespace TP2_Simulación
 
         private void populate_graph()
         {
-            // Create a new series for the histogram
+            // Crear una nueva serie para el grafico
             var series = new Series("Observaciones");
             chtHistograma.Series[0].IsVisibleInLegend = false;
             series.ChartType = SeriesChartType.Column;
             series.XValueType = ChartValueType.Double;
 
-            // Add some sample data to the series
+            // Agregar datos a las series
             double min = Math.Truncate(data.Min() * 10000) / 10000;
             double max = Math.Truncate(data.Max() * 10000) / 10000;
             double intervalWidth = (max - min) / numIntervalos;
 
-            // Calculate the frequency of each interval
+            // Calcular la frecuencia de cada intervalo
             int[] freqs = new int[numIntervalos];
             foreach (double d in data)
             {
@@ -54,7 +54,7 @@ namespace TP2_Simulación
                 
             }
 
-            // Add the interval boundaries and frequencies to the series
+            // Agregar los limites de intervalos y las frecuencias a las series
             for (int i = 0; i < numIntervalos; i++)
             {
                 double xValue = data.Min() + i * intervalWidth;
@@ -62,14 +62,14 @@ namespace TP2_Simulación
                 series.Points[i].Label = freqs[i].ToString();
             }
 
-            // Add the series to the chart and adjust the X-axis interval
+            // Argegar las series al grafico y ajustar los intervalos de x
             chtHistograma.Series.Add(series);
             chtHistograma.ChartAreas[0].AxisX.Interval = intervalWidth;
 
 
             chtHistograma.Series[0].XValueType = ChartValueType.Double;
 
-            // Set the X-axis properties
+            // Seteas las propiedadesd el eje x y otras
             chtHistograma.ChartAreas[0].AxisX.Title = "Límites Inferiores";
             chtHistograma.ChartAreas[0].AxisY.Title = "Cantidad Observada";
             chtHistograma.ChartAreas[0].AxisX.Minimum = min;

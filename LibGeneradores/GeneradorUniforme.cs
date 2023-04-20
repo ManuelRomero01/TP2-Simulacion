@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace TP2_Simulación.Clases
+namespace LibGeneradores
 {
-    internal class GeneradorUniforme
+    public class GeneradorUniforme
     {
         // Definición de atributos
         private double desde;
-        private double hasta; 
-        private int cantidad; 
+        private double hasta;
+        private int cantidad;
 
         // Generador de números pseudoaleatorios
         private Random random = new Random();

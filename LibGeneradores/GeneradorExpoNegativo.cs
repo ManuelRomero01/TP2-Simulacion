@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace TP2_Simulación.Clases
+namespace LibGeneradores
 {
-    internal class GeneradorExpoNegativo
+    public class GeneradorExpoNegativo
     {
         // Definición de atributos
         private double lambda;
@@ -49,7 +49,7 @@ namespace TP2_Simulación.Clases
 
                 rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
 
-                while ( rnd == 0.00)
+                while (rnd == 0.00)
                 {
                     rnd = Math.Truncate(random.NextDouble() * 10000) / 10000;
                 }
@@ -61,4 +61,3 @@ namespace TP2_Simulación.Clases
         }
     }
 }
-
