@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.chtHistograma = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chtHistograma)).BeginInit();
@@ -40,38 +40,39 @@
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(-1, 0);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(-3, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(121, 25);
+            this.lblTitulo.Size = new System.Drawing.Size(345, 69);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Histograma";
             // 
             // chtHistograma
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chtHistograma.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtHistograma.Legends.Add(legend1);
-            this.chtHistograma.Location = new System.Drawing.Point(58, 49);
+            chartArea3.Name = "ChartArea1";
+            this.chtHistograma.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chtHistograma.Legends.Add(legend3);
+            this.chtHistograma.Location = new System.Drawing.Point(184, 139);
+            this.chtHistograma.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.chtHistograma.Name = "chtHistograma";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chtHistograma.Series.Add(series1);
-            this.chtHistograma.Size = new System.Drawing.Size(842, 496);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chtHistograma.Series.Add(series3);
+            this.chtHistograma.Size = new System.Drawing.Size(2666, 1412);
             this.chtHistograma.TabIndex = 2;
             this.chtHistograma.Text = "chart1";
             // 
             // Histograma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(974, 584);
+            this.ClientSize = new System.Drawing.Size(3084, 1662);
             this.Controls.Add(this.chtHistograma);
             this.Controls.Add(this.lblTitulo);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "Histograma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Histograma";

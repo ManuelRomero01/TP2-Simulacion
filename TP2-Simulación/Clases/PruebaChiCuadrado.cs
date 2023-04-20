@@ -103,6 +103,7 @@ namespace TP2_Simulación.Clases
                 }
                 else if (i == intervalos - 1)
                 {
+                    
                     limInf = tabla[intervalosDePrueba - 1][0];
                     ultimaMenor = true;
                     intervalos += 1;

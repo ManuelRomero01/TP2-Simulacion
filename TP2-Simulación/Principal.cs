@@ -34,6 +34,7 @@ namespace TP2_Simulación
             cmbTipoDistribucion.SelectedIndex = 0;
             lblPrimeraVariable.Text = "Media";
             lblSegundaVariable.Text = "Desviacion estandar:";
+            cmbTipoNormal.SelectedIndex = 0;
         }
 
         private void limpiarInterfaz()
@@ -66,6 +67,8 @@ namespace TP2_Simulación
             // Distribución Normal
             if (cmbTipoDistribucion.SelectedIndex == 0)
             {
+                cmbTipoNormal.Visible = true;
+                lblTipoNormal.Visible = true;
                 sacarBotones();
                 lblPrimeraVariable.Text = "Media: ";
                 lblSegundaVariable.Text = "Desviacion estandar: ";
@@ -73,6 +76,8 @@ namespace TP2_Simulación
             // Distribución Uniforme
             if (cmbTipoDistribucion.SelectedIndex == 1)
             {
+                lblTipoNormal.Visible = false;
+                cmbTipoNormal.Visible = false;
                 sacarBotones();
                 lblPrimeraVariable.Text = "Variable A: ";
                 lblSegundaVariable.Text = "Variable B: ";
@@ -80,7 +85,9 @@ namespace TP2_Simulación
             // Distribución Exponencial Negativa
             if (cmbTipoDistribucion.SelectedIndex == 2)
             {
-                
+
+                lblTipoNormal.Visible = false;
+                cmbTipoNormal.Visible = false;
                 VariablesDependientes = true;
                 sacarBotones();
                 lblPrimeraVariable.Text = "Lambda: ";
@@ -89,6 +96,8 @@ namespace TP2_Simulación
             // Distribución Poisson
             if (cmbTipoDistribucion.SelectedIndex == 3)
             {
+                lblTipoNormal.Visible = false;
+                cmbTipoNormal.Visible = false;
                 sacarBotones();
                 cmbIntervalos.SelectedIndex = -1;
                 cmbIntervalos.Enabled = false;
@@ -276,12 +285,21 @@ namespace TP2_Simulación
                                     double.Parse(txtPrimeraVariable.Text),
                                     double.Parse(txtSegundaVariable.Text),
                                     int.Parse(txtCantValores.Text));
-
-                                (ListaVariablesAleatorias, ListaRandom) = generador.generarDistribucionNormal();
+                                    
+                                if(cmbTipoNormal.SelectedIndex == 0)
+                                {
+                                    (ListaVariablesAleatorias, ListaRandom) = generador.generarDistribucionNormalBM();
+                                }
+                                else
+                                {
+                                    (ListaVariablesAleatorias, ListaRandom) = generador.generarDistribucionNormalCON();
+                                }
+                                
                                     
                             }
                             if (cmbTipoDistribucion.SelectedIndex == 1)
                             {
+                                
                                 validarVariablesUniformes();
                                 cmbIntervalos.Enabled = true;
                                 GeneradorUniforme generador = new GeneradorUniforme(
@@ -293,6 +311,7 @@ namespace TP2_Simulación
                             }
                             if (cmbTipoDistribucion.SelectedIndex == 2)
                             {
+                                
                                 verificarVariablesCero();                            
                                 cmbIntervalos.Enabled = true;
                                 GeneradorExpoNegativo generador = new GeneradorExpoNegativo(
@@ -311,6 +330,7 @@ namespace TP2_Simulación
                             }
                             if (cmbTipoDistribucion.SelectedIndex == 3)
                             {
+                                
                                 verificarVariablesCero();                            
                                 cmbIntervalos.Enabled = false;
                                 GeneradorPoisson generador = new GeneradorPoisson(
@@ -433,7 +453,7 @@ namespace TP2_Simulación
             {
                 if (validarIntervalos())
                 {
-                    Histograma ventana = new Histograma(ListaVariablesAleatorias, ConseguirCantIntervalos(cmbIntervalos.SelectedIndex));
+                    Histograma ventana = new Histograma(ListaVariablesAleatorias, ConseguirCantIntervalos(cmbIntervalos.SelectedIndex),cmbTipoDistribucion.SelectedIndex);
                     ventana.ShowDialog();
                 }
                 else
@@ -443,7 +463,7 @@ namespace TP2_Simulación
             }
             else
             {
-                Histograma ventana = new Histograma(ListaVariablesAleatorias, ConseguirCantIntervalos(cmbIntervalos.SelectedIndex));
+                Histograma ventana = new Histograma(ListaVariablesAleatorias, ConseguirCantIntervalos(cmbIntervalos.SelectedIndex),cmbTipoDistribucion.SelectedIndex);
                 ventana.ShowDialog();
             }
         }

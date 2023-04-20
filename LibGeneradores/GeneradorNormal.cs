@@ -12,6 +12,7 @@ namespace LibGeneradores
         private double media;
         private int cantidad;
         private double desviacion;
+        
 
         // Constructor de la clase
         public GeneradorNormal(double media, double desviacion, int cantidad)
@@ -19,6 +20,7 @@ namespace LibGeneradores
             this.desviacion = desviacion;
             this.media = media;
             this.cantidad = cantidad;
+            
         }
 
         // Generador de números pseudoaleatorios
@@ -43,7 +45,7 @@ namespace LibGeneradores
         }
 
         // Generador de variables aleatorias normal
-        public (double[], string[]) generarDistribucionNormal()
+        public (double[], string[]) generarDistribucionNormalBM()
         {
             double[] x = new double[cantidad];
             string[] y = new string[cantidad];
@@ -95,6 +97,37 @@ namespace LibGeneradores
                 x[i] = Math.Truncate(variableAleatoria * 10000) / 10000;
             }
             return (x, y);
+        }
+        public (double[], string[]) generarDistribucionNormalCON()
+        {
+            double[] x = new double[cantidad];
+            string[] y = new string[cantidad];
+            double acumuladorRND = 0;
+
+            double variableAleatoria;
+            for (int j = 0; j < cantidad; j++)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    random1 = Math.Truncate(random.NextDouble() * 10000) / 10000;
+                    
+                    
+                    
+                    y[j] += random1.ToString() + " | ";
+                    acumuladorRND += random1;
+                    
+
+                }
+                
+                variableAleatoria = ((acumuladorRND - 6) * desviacion) + media;
+                x[j] = Math.Truncate(variableAleatoria * 10000) / 10000;
+                acumuladorRND = 0;
+            }
+            return (x, y);
+
+
+                
+
         }
     }
 }

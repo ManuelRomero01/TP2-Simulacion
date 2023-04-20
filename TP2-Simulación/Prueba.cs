@@ -277,10 +277,5 @@ namespace TP2_Simulación
 
             }
         }
-
-        private void Prueba_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

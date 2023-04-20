@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblTipoPrueba = new System.Windows.Forms.Label();
             this.cmbTipoPrueba = new System.Windows.Forms.ComboBox();
@@ -47,10 +48,9 @@
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(0, -1);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(0, -3);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(288, 25);
+            this.lblTitulo.Size = new System.Drawing.Size(815, 69);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Prueba de Bondad de Ajuste";
             // 
@@ -58,10 +58,9 @@
             // 
             this.lblTipoPrueba.AutoSize = true;
             this.lblTipoPrueba.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoPrueba.Location = new System.Drawing.Point(363, 38);
-            this.lblTipoPrueba.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTipoPrueba.Location = new System.Drawing.Point(1600, 111);
             this.lblTipoPrueba.Name = "lblTipoPrueba";
-            this.lblTipoPrueba.Size = new System.Drawing.Size(202, 17);
+            this.lblTipoPrueba.Size = new System.Drawing.Size(511, 46);
             this.lblTipoPrueba.TabIndex = 1;
             this.lblTipoPrueba.Text = "Tipo de prueba a ejecutar:";
             // 
@@ -73,10 +72,9 @@
             this.cmbTipoPrueba.Items.AddRange(new object[] {
             "Chi-Cuadrado",
             "Kolmorogov-Smirnov"});
-            this.cmbTipoPrueba.Location = new System.Drawing.Point(567, 39);
-            this.cmbTipoPrueba.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.cmbTipoPrueba.Location = new System.Drawing.Point(2246, 114);
             this.cmbTipoPrueba.Name = "cmbTipoPrueba";
-            this.cmbTipoPrueba.Size = new System.Drawing.Size(125, 21);
+            this.cmbTipoPrueba.Size = new System.Drawing.Size(387, 45);
             this.cmbTipoPrueba.TabIndex = 2;
             this.cmbTipoPrueba.SelectedIndexChanged += new System.EventHandler(this.cmbTipoPrueba_SelectedIndexChanged);
             this.cmbTipoPrueba.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbTipoPrueba_MouseClick);
@@ -85,85 +83,90 @@
             // 
             this.gdrPrueba.AllowUserToAddRows = false;
             this.gdrPrueba.AllowUserToDeleteRows = false;
+            this.gdrPrueba.AllowUserToResizeRows = false;
+            this.gdrPrueba.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gdrPrueba.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gdrPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gdrPrueba.Location = new System.Drawing.Point(10, 69);
-            this.gdrPrueba.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gdrPrueba.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gdrPrueba.Location = new System.Drawing.Point(32, 196);
+            this.gdrPrueba.MultiSelect = false;
             this.gdrPrueba.Name = "gdrPrueba";
             this.gdrPrueba.ReadOnly = true;
+            this.gdrPrueba.RowHeadersVisible = false;
             this.gdrPrueba.RowHeadersWidth = 123;
             this.gdrPrueba.RowTemplate.Height = 46;
-            this.gdrPrueba.Size = new System.Drawing.Size(680, 303);
+            this.gdrPrueba.Size = new System.Drawing.Size(2601, 862);
             this.gdrPrueba.TabIndex = 3;
             // 
             // lblTabulado
             // 
             this.lblTabulado.AutoSize = true;
             this.lblTabulado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTabulado.Location = new System.Drawing.Point(10, 380);
-            this.lblTabulado.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTabulado.Location = new System.Drawing.Point(32, 1082);
             this.lblTabulado.Name = "lblTabulado";
-            this.lblTabulado.Size = new System.Drawing.Size(135, 20);
+            this.lblTabulado.Size = new System.Drawing.Size(378, 55);
             this.lblTabulado.TabIndex = 4;
             this.lblTabulado.Text = "Valor Tabulado:";
             // 
             // txtTabulado
             // 
-            this.txtTabulado.Location = new System.Drawing.Point(183, 384);
-            this.txtTabulado.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtTabulado.Location = new System.Drawing.Point(580, 1093);
             this.txtTabulado.Name = "txtTabulado";
             this.txtTabulado.ReadOnly = true;
-            this.txtTabulado.Size = new System.Drawing.Size(191, 20);
+            this.txtTabulado.Size = new System.Drawing.Size(596, 44);
             this.txtTabulado.TabIndex = 5;
             // 
             // lblCalculado
             // 
             this.lblCalculado.AutoSize = true;
             this.lblCalculado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCalculado.Location = new System.Drawing.Point(10, 411);
-            this.lblCalculado.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblCalculado.Location = new System.Drawing.Point(32, 1170);
             this.lblCalculado.Name = "lblCalculado";
-            this.lblCalculado.Size = new System.Drawing.Size(140, 20);
+            this.lblCalculado.Size = new System.Drawing.Size(392, 55);
             this.lblCalculado.TabIndex = 6;
             this.lblCalculado.Text = "Valor Calculado:";
             // 
             // txtCalculado
             // 
-            this.txtCalculado.Location = new System.Drawing.Point(183, 416);
-            this.txtCalculado.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtCalculado.Location = new System.Drawing.Point(580, 1184);
             this.txtCalculado.Name = "txtCalculado";
             this.txtCalculado.ReadOnly = true;
-            this.txtCalculado.Size = new System.Drawing.Size(191, 20);
+            this.txtCalculado.Size = new System.Drawing.Size(596, 44);
             this.txtCalculado.TabIndex = 7;
             // 
             // lblResultado
             // 
             this.lblResultado.AutoSize = true;
             this.lblResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultado.Location = new System.Drawing.Point(10, 442);
-            this.lblResultado.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblResultado.Location = new System.Drawing.Point(32, 1258);
             this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(96, 20);
+            this.lblResultado.Size = new System.Drawing.Size(264, 55);
             this.lblResultado.TabIndex = 8;
             this.lblResultado.Text = "Resultado:";
             // 
             // txtResultado
             // 
             this.txtResultado.BackColor = System.Drawing.SystemColors.Control;
-            this.txtResultado.Location = new System.Drawing.Point(183, 446);
-            this.txtResultado.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtResultado.Location = new System.Drawing.Point(580, 1269);
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(191, 20);
+            this.txtResultado.Size = new System.Drawing.Size(596, 44);
             this.txtResultado.TabIndex = 9;
             // 
             // lblSignificancia
             // 
             this.lblSignificancia.AutoSize = true;
             this.lblSignificancia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSignificancia.Location = new System.Drawing.Point(7, 37);
-            this.lblSignificancia.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblSignificancia.Location = new System.Drawing.Point(22, 105);
             this.lblSignificancia.Name = "lblSignificancia";
-            this.lblSignificancia.Size = new System.Drawing.Size(169, 17);
+            this.lblSignificancia.Size = new System.Drawing.Size(434, 46);
             this.lblSignificancia.TabIndex = 10;
             this.lblSignificancia.Text = "Nivel de Significancia:";
             // 
@@ -175,21 +178,20 @@
             "0,01",
             "0,05",
             "0,10"});
-            this.cmbSignificancia.Location = new System.Drawing.Point(193, 40);
-            this.cmbSignificancia.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.cmbSignificancia.Location = new System.Drawing.Point(611, 114);
             this.cmbSignificancia.Name = "cmbSignificancia";
-            this.cmbSignificancia.Size = new System.Drawing.Size(125, 21);
+            this.cmbSignificancia.Size = new System.Drawing.Size(387, 45);
             this.cmbSignificancia.TabIndex = 11;
             this.cmbSignificancia.SelectedIndexChanged += new System.EventHandler(this.cmbSignificancia_SelectedIndexChanged);
             // 
             // Prueba
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.NavajoWhite;
-            this.ClientSize = new System.Drawing.Size(748, 483);
+            this.ClientSize = new System.Drawing.Size(2699, 1375);
             this.Controls.Add(this.cmbSignificancia);
             this.Controls.Add(this.lblSignificancia);
             this.Controls.Add(this.txtResultado);
@@ -202,11 +204,10 @@
             this.Controls.Add(this.cmbTipoPrueba);
             this.Controls.Add(this.lblTipoPrueba);
             this.Controls.Add(this.lblTitulo);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "Prueba";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prueba";
-            this.Load += new System.EventHandler(this.Prueba_Load);
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.gdrPrueba)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
