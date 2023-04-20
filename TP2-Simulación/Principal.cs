@@ -39,6 +39,7 @@ namespace TP2_Simulación
 
         private void limpiarInterfaz()
         {
+            //Metodo para limpiar interfaz cuando se selecciona el boton Limpiar Campos
             txtCantValores.Text = "";
             txtPrimeraVariable.Text = "";
             txtSegundaVariable.Text = "";
@@ -49,6 +50,7 @@ namespace TP2_Simulación
         }
         private void sacarBotones()
         {
+            //Saca botones cuando se selecciona una nueva dsitribucion en el cmbTipoDistribucion
             btnHistograma.Visible = false;
             btnPrueba.Visible = false;
         }
@@ -248,6 +250,7 @@ namespace TP2_Simulación
         }
         private void validarVariablesUniformes()
         {
+            //Verificacion de que A no sea mayor o igual a B en la dsitribucion Uniforme
             double A = double.Parse(txtPrimeraVariable.Text);
             double B = double.Parse(txtSegundaVariable.Text);
             if (A >= B)
@@ -361,6 +364,7 @@ namespace TP2_Simulación
         //Generar la labla con numeros y variables aleatorias
         public void populateDataTable(string[] randoms, double[] aleatoria, int desde, int hasta)
         {
+            //Creacion de columnas
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Index", typeof(int));
             dataTable.Columns.Add("Randoms", typeof(string));
@@ -368,6 +372,7 @@ namespace TP2_Simulación
             
             for (int i = desde-1; i <= hasta-1; i++)
             {
+                //Se agregan datos a las filas
                 DataRow row = dataTable.NewRow();
                 row["Index"] = i+1;
                 row["Randoms"] = randoms[i];
@@ -445,7 +450,7 @@ namespace TP2_Simulación
             }
         }
 
-
+        //Creacion de metodo para generar el histograma
         private void btnHistograma_Click(object sender, EventArgs e)
         {
 

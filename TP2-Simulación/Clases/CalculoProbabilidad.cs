@@ -5,6 +5,7 @@ namespace TP2_Simulación.Clases
 {
     internal class CalculoProbabilidad
     {
+        //Calculo de probabilidades segun la dsitribucion requerida
         public static double probabilidadUniforme(double x, double a, double b)
         {
             return (x - a) / (b - a);

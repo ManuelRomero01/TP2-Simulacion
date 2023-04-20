@@ -37,7 +37,7 @@ namespace LibGeneradores
             return (x, y);
         }
 
-
+        //Metodo para generar la variable de Poisson
         public double generarValorX()
         {
             double p = 1;

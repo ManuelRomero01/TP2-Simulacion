@@ -53,7 +53,7 @@ namespace TP2_Simulación.Clases
                 // Calculo la frecuencia observada con el índice devuelto por una búsqueda binaria
                 fo = Auxiliar.busquedaBinaria(valoresAleatorios, limSup) - foAcumulada;
 
-                // Calculo probabilidad esperada del intervalo inferior y superior, según tipo de distribución 
+                // Calculo probabilidad esperada del intervalo inferior y superior, según tipo de distribución, tambien se setea m(cant datos empiricos) segun la dsitrbucion
                 switch (tipoDistr)
                 {
                     case 0:
@@ -158,6 +158,9 @@ namespace TP2_Simulación.Clases
             
 
             for (int i = 0; i < cantidadValores; i++)
+            //Metodo para que si fe < 5 que agrupe con el intervalo adyacente
+
+
             {
                 if (ultimaMenor)
                 {
